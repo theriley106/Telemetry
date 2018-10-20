@@ -19,7 +19,7 @@ driver.find_element_by_id("ap_password").clear()
 driver.find_element_by_id("ap_password").send_keys(password)
 driver.find_element_by_id("signInSubmit").click()
 raw_input("")
-driver.get("https://developer.amazon.com/alexa/console/ask/test/amzn1.ask.skill.14b0df53-f2d0-4031-b53d-f2a6bf9e23b1/development/en_US/")
+driver.get("https://developer.amazon.com/alexa/console/ask/test/amzn1.ask.skill.a00d7304-d36b-4ae0-8352-dd7e8fbc5d79/development/en_US/")
 try:
 	driver.find_element_by_id("ap_password").clear()
 	driver.find_element_by_id("ap_password").send_keys(password)
