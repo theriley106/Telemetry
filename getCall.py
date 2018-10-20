@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/voice', methods=['GET', 'POST'])
 def get_capability_token():
 	resp = VoiceResponse()
-	gather = Gather(input='speech', action='/completed')
+	gather = Gather(input='speech', action='/completed', speechTimeout="1")
 	gather.say("Thanks for calling Citi Bank!  How can I help you today?")
 	resp.append(gather)
 	print(resp)
@@ -17,7 +17,7 @@ def get_capability_token():
 @app.route('/anyThingElse', methods=["GET","POST"])
 def getAnother():
 	resp = VoiceResponse()
-	gather = Gather(input='speech', action='/completed')
+	gather = Gather(input='speech', action='/completed', speechTimeout="1")
 	gather.say("Is there anything else I can help you with today?")
 	resp.append(gather)
 	print(resp)
