@@ -1,0 +1,1352 @@
+<html><head><script src="https://by2.uservoice.com/t2/811219/web/track.js?_=1540047729267&amp;s=0&amp;c=__uvSessionData0&amp;d=eyJlIjp7InUiOiJodHRwczovL2RldmVsb3Blci5hbWF6b24uY29tL2FsZXhhL2NvbnNvbGUvYXNrL3Rlc3QvYW16bjEuYXNrLnNraWxsLjE0YjBkZjUzLWYyZDAtNDAzMS1iNTNkLWYyYTZiZjllMjNiMS9kZXZlbG9wbWVudC9lbl9VUy8iLCJyIjoiIn19" defer="" async="" type="application/javascript"></script><script crossorigin="anonymous" src="https://m.media-amazon.com/images/G/01/csm/showads.v2.js" async=""></script><script crossorigin="anonymous" src="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/ClientSideMetricsAUIJavascript@jserrorsForester.0acd236281a4d93774c265b3bec043f2087a43c2._V2_.js" async=""></script>
+    <title>Alexa Developer Console</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" itemprop="url" href="https://m.media-amazon.com/images/G/01/ASK/rosie-v2/css/bootstrap.min._CB472035751_.css">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="/alexa/console/ask/dante/static/css/all.css">
+    <!-- Combined Dante CSS -->
+    <link rel="stylesheet" href="/alexa/console/ask/dante/static/css/app.css">
+
+
+    <script src="//widget.uservoice.com/BKxDZqeiLRvyj2Ot9kgeA.js" async="" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+        var digitalData = {
+            page: {
+                pageInfo: {
+                    pageInstanceID: "/alexa/console/ask",
+                    path: "/alexa/console/ask",
+                    pageID: "",
+                    pageTitle: "",
+                    pageType: "DeX",
+                    primaryCategory: "alexa",
+                    pageName: "",
+                    language: "en_US"
+                }
+            },
+            user: {
+                userID: "A1ARLOHEQPFB24",
+                ipAddress: "38.101.220.234",
+                userAgent: ""
+            }
+        };
+    </script>
+    <script src="//assets.adobedtm.com/2c02c31d2aed638ba6c6ca977df6b73f9ff514c3/satelliteLib-38635b7dc936a1789c429e0c77550bc7a78f33af.js"></script>
+<style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace-chrome">.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-chrome */</style><script src="https://assets.adobedtm.com/2c02c31d2aed638ba6c6ca977df6b73f9ff514c3/s-code-contents-373b2dd14221c2821669637d7d2b8bc0ed1d5cbc.js"></script><script src="https://assets.adobedtm.com/2c02c31d2aed638ba6c6ca977df6b73f9ff514c3/scripts/satellite-5ae0e73a64746d762f0188f1.js"></script><style media="screen" type="text/css">.uv-icon{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;display:inline-block;cursor:pointer;position:relative;-moz-transition:all 300ms;-o-transition:all 300ms;-webkit-transition:all 300ms;transition:all 300ms;width:39px;height:39px;position:fixed;z-index:100002;opacity:0.8;-moz-transition:opacity 100ms;-o-transition:opacity 100ms;-webkit-transition:opacity 100ms;transition:opacity 100ms}.uv-icon.uv-bottom-right{bottom:10px;right:12px}.uv-icon.uv-top-right{top:10px;right:12px}.uv-icon.uv-bottom-left{bottom:10px;left:12px}.uv-icon.uv-top-left{top:10px;left:12px}.uv-icon.uv-is-selected{opacity:1}.uv-icon svg{width:39px;height:39px}.uv-icon-trigger{display:block;width:39px;height:39px}.uv-popover{font-family:sans-serif;font-weight:100;font-size:13px;color:black;position:fixed;z-index:100001}.uv-popover-content{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background:white;border:1px solid transparent;position:relative;width:325px;height:325px;-moz-transition:background 200ms;-o-transition:background 200ms;-webkit-transition:background 200ms;transition:background 200ms}.uv-bottom .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 0 -10px 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-top .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 0 10px 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-left .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) 10px 0 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-right .uv-popover-content{-moz-box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;-webkit-box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px;box-shadow:rgba(0,0,0,0.3) -10px 0 60px,rgba(0,0,0,0.1) 0 0 20px}.uv-ie8 .uv-popover-content{position:relative}.uv-ie8 .uv-popover-content .uv-popover-content-shadow{display:block;background:black;content:'';position:absolute;left:-15px;top:-15px;width:100%;height:100%;filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=15,MakeShadow=true,ShadowOpacity=0.30);z-index:-1}.uv-popover-tail{border:9px solid transparent;width:0;z-index:10;position:absolute;-moz-transition:border-top-color 200ms;-o-transition:border-top-color 200ms;-webkit-transition:border-top-color 200ms;transition:border-top-color 200ms}.uv-top .uv-popover-tail{bottom:-20px;border-top:11px solid white}.uv-bottom .uv-popover-tail{top:-20px;border-bottom:11px solid white}.uv-left .uv-popover-tail{right:-20px;border-left:11px solid white}.uv-right .uv-popover-tail{left:-20px;border-right:11px solid white}.uv-popover-loading{background:white;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;position:absolute;width:100%;height:100%;left:0;top:0}.uv-popover-loading-text{position:absolute;top:50%;margin-top:-0.5em;width:100%;text-align:center}.uv-popover-iframe-container{height:100%}.uv-popover-iframe{-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;overflow:hidden}.uv-is-hidden{display:none}.uv-is-invisible{display:block !important;visibility:hidden !important}.uv-is-transitioning{display:block !important}.uv-no-transition{-moz-transition:none !important;-webkit-transition:none !important;-o-transition:color 0 ease-in !important;transition:none !important}.uv-fade{opacity:1;-moz-transition:opacity 200ms ease-out;-o-transition:opacity 200ms ease-out;-webkit-transition:opacity 200ms ease-out;transition:opacity 200ms ease-out}.uv-fade.uv-is-hidden{opacity:0}.uv-scale-top,.uv-scale-top-left,.uv-scale-top-right,.uv-scale-bottom,.uv-scale-bottom-left,.uv-scale-bottom-right,.uv-scale-right,.uv-scale-right-top,.uv-scale-right-bottom,.uv-scale-left,.uv-scale-left-top,.uv-scale-left-bottom,.uv-slide-top,.uv-slide-bottom,.uv-slide-left,.uv-slide-right{opacity:1;-moz-transition:all 80ms ease-out;-o-transition:all 80ms ease-out;-webkit-transition:all 80ms ease-out;transition:all 80ms ease-out}.uv-scale-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%);-ms-transform:scale(0.8) translateY(-15%);-webkit-transform:scale(0.8) translateY(-15%);transform:scale(0.8) translateY(-15%)}.uv-scale-top-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%) translateX(-10%);-ms-transform:scale(0.8) translateY(-15%) translateX(-10%);-webkit-transform:scale(0.8) translateY(-15%) translateX(-10%);transform:scale(0.8) translateY(-15%) translateX(-10%)}.uv-scale-top-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(-15%) translateX(10%);-ms-transform:scale(0.8) translateY(-15%) translateX(10%);-webkit-transform:scale(0.8) translateY(-15%) translateX(10%);transform:scale(0.8) translateY(-15%) translateX(10%)}.uv-scale-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%);-ms-transform:scale(0.8) translateY(15%);-webkit-transform:scale(0.8) translateY(15%);transform:scale(0.8) translateY(15%)}.uv-scale-bottom-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%) translateX(-10%);-ms-transform:scale(0.8) translateY(15%) translateX(-10%);-webkit-transform:scale(0.8) translateY(15%) translateX(-10%);transform:scale(0.8) translateY(15%) translateX(-10%)}.uv-scale-bottom-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateY(15%) translateX(10%);-ms-transform:scale(0.8) translateY(15%) translateX(10%);-webkit-transform:scale(0.8) translateY(15%) translateX(10%);transform:scale(0.8) translateY(15%) translateX(10%)}.uv-scale-right.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%);-ms-transform:scale(0.8) translateX(15%);-webkit-transform:scale(0.8) translateX(15%);transform:scale(0.8) translateX(15%)}.uv-scale-right-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%) translateY(-10%);-ms-transform:scale(0.8) translateX(15%) translateY(-10%);-webkit-transform:scale(0.8) translateX(15%) translateY(-10%);transform:scale(0.8) translateX(15%) translateY(-10%)}.uv-scale-right-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(15%) translateY(10%);-ms-transform:scale(0.8) translateX(15%) translateY(10%);-webkit-transform:scale(0.8) translateX(15%) translateY(10%);transform:scale(0.8) translateX(15%) translateY(10%)}.uv-scale-left.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%);-ms-transform:scale(0.8) translateX(-15%);-webkit-transform:scale(0.8) translateX(-15%);transform:scale(0.8) translateX(-15%)}.uv-scale-left-top.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%) translateY(-10%);-ms-transform:scale(0.8) translateX(-15%) translateY(-10%);-webkit-transform:scale(0.8) translateX(-15%) translateY(-10%);transform:scale(0.8) translateX(-15%) translateY(-10%)}.uv-scale-left-bottom.uv-is-hidden{opacity:0;-moz-transform:scale(0.8) translateX(-15%) translateY(10%);-ms-transform:scale(0.8) translateX(-15%) translateY(10%);-webkit-transform:scale(0.8) translateX(-15%) translateY(10%);transform:scale(0.8) translateX(-15%) translateY(10%)}.uv-slide-top.uv-is-hidden{-moz-transform:translateY(-100%);-ms-transform:translateY(-100%);-webkit-transform:translateY(-100%);transform:translateY(-100%)}.uv-slide-bottom.uv-is-hidden{-moz-transform:translateY(100%);-ms-transform:translateY(100%);-webkit-transform:translateY(100%);transform:translateY(100%)}.uv-slide-left.uv-is-hidden{-moz-transform:translateX(-100%);-ms-transform:translateX(-100%);-webkit-transform:translateX(-100%);transform:translateX(-100%)}.uv-slide-right.uv-is-hidden{-moz-transform:translateX(100%);-ms-transform:translateX(100%);-webkit-transform:translateX(100%);transform:translateX(100%)}
+</style><style media="print" type="text/css">#uvTab,.uv-tray,.uv-icon,.uv-popover,.uv-bubble{display:none!important}</style></head>
+
+<body>
+<div class="dante-content-wrapper">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="dante-header">
+    <div class="container-fluid p-0">
+        <nav class="navbar d-flex flex-row align-items-start custom-nav-bar">
+            <div class="flex-column p-0 m-0">
+                <a href="/alexa/console/ask" id="dpc-header-logo" class="dpc-logo">
+                    <div class="row">
+                            <div class="col align-self-end">
+                                    <img src="https://m.media-amazon.com/images/G/01/AlexaDevPortal/alexa.CB473388935._CB1539290662_.png" alt="Alexa Developer Console" class="p-0">
+                            </div>
+                            <div class="col align-self-center">
+                                <span class="dpc-console-title row justify-content-start">alexa developer console</span>
+                            </div>
+                    </div>
+                </a>
+            </div>
+            <div class="flex-column-reverse ml-auto">
+                <ul class="navbar-nav dpcHeaderButtonRow">
+                    <li class="nav-item nav-item-dpcSearch dpcHeaderButtonWrapper">
+                        <a href="#">
+                            <div class="dpcHeaderButton dpcHeaderSearchButton">
+                                <svg class="dpcSearchIcon" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+                                    <circle stroke="#FFFFFF" stroke-width="2" cx="8" cy="8" r="7" fill="transparent"></circle>
+                                    <path d="M13.5,13.5 L19.5,19.5" id="Path-1" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path>
+                                </svg>
+                            </div>
+                        </a>
+                        <form id="dpcSearchForm" class="dpcSearch active d-none" method="get" action="https://developer.amazon.com/search" target="_blank">
+                            <button type="submit" id="searchButton" class="dpcButton dpcButtonSearch">
+                                <svg class="dpcSearchIcon" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+                                    <circle stroke="#FFFFFF" stroke-width="2" cx="8" cy="8" r="7" fill="transparent"></circle>
+                                    <path d="M13.5,13.5 L19.5,19.5" id="Path-1" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path>
+                                </svg>
+                            </button>
+                            <div class="dpcSearchWrap">
+                                <input id="search" name="query" class="dpcSearchField" onfocus="this.value=''" placeholder="Search..." autocomplete="off" type="search">
+                            </div>
+                        </form>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dpcHeaderButtonWrapper" href="#" id="navbarDropdownMenuLink">
+
+
+                                    <div title="" data-original-title="" class="dpcHeaderButton" id="account-preferences-menu" data-toggle="popover" data-trigger="hover" data-container="body">
+                                        <span> CL </span>
+                                    </div>
+
+
+
+                        </a>
+                    </li>
+                    <li class="nav-item pr-2">
+                        <a class="nav-link dpcHeaderButtonWrapper pr-0" href="#" id="navbarSupportDropdownMenuLink">
+                            <div title="" data-original-title="" class="dpcHeaderButton" id="support-popover" data-toggle="popover">
+                                <span> <i class="fas fa-ellipsis-v"></i> </span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- user account popover content -->
+<div id="user-pref-popover-content" class="dropdown" style="display: none">
+
+
+            <div class="header-popover-content dropdown">
+                <div class="header-popover-inner-content">
+                    <div class="user-pref-popover-header">
+                            Christopher Lambert
+                        <small>as</small>
+                            Theriley106
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="hp-menu">
+                        <ul>
+                            <a href="https://developer.amazon.com/myaccount.html" target="_blank" class="my-0 w-100">
+                                <li class="w-100">
+                                    <span class="ml-3">Settings</span>
+                                </li>
+                            </a>
+
+
+
+                            <a href="https://developer.amazon.com/alexa/console/logout?language=en_US&amp;returnUrl=%2Falexa-skills-kit" class="w-100">
+                                <li class="w-100">
+                                    <span class="ml-3">Sign Out</span>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- support popover content -->
+<div id="support-popover-content" style="display: none">
+    <div class="header-popover-content">
+        <div class="header-popover-inner-content">
+            <div class="hp-menu">
+                <ul>
+                    <a class="container" href="/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html" target="_blank">
+                        <li>
+                            <span class="ml-3">Documentation</span>
+                        </li>
+                    </a>
+                    <a class="container" href="https://forums.developer.amazon.com/spaces/23/index.html" target="_blank">
+                        <li>
+                            <span class="ml-3">Forums</span>
+                        </li>
+                    </a>
+                    <a class="container" href="/alexa-skills-kit" target="_blank">
+                        <li>
+                            <span class="ml-3">Alexa Developer Home</span>
+                        </li>
+                    </a>
+                    <a class="container" href="https://developer.amazon.com/support/contact-us?subjectCategory=ALEXA" target="_blank">
+                        <li>
+                            <span class="ml-3">Contact Us</span>
+                        </li>
+                    </a>
+                    <li role="separator"><div class="dropdown-divider"></div></li>
+                    <!-- TODO auto generate this list from a config -->
+                    <a class="container" href="https://developer.amazon.com/alexa/console/ask">
+                        <li>
+                            <span class="ml-3">Alexa Skills Kit</span>
+                        </li>
+                    </a>
+                    <a class="container" href="https://developer.amazon.com/avs/home.html" target="_blank">
+                        <li>
+                            <span class="ml-3">Alexa Voice Service</span>
+                        </li>
+                    </a>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </nav>
+    </div>
+</header>
+
+    <div class="dante-content">
+        <div class="dante-container-fluid">
+            <div class="dante-row">
+                <div class="dpc-tenant-content" style="width:100%">
+
+
+
+
+
+
+<!-- csm header start -->
+
+<script type="text/javascript">var ue_t0=ue_t0||+new Date();</script>
+<script type="text/javascript">
+window.ue_ihb = (window.ue_ihb || window.ueinit || 0) + 1;
+if (window.ue_ihb === 1) {
+
+var ue_csm = window,
+    ue_hob = +new Date();
+(function(d){var e=d.ue=d.ue||{},f=Date.now||function(){return+new Date};e.d=function(b){return f()-(b?0:d.ue_t0)};e.stub=function(b,a){if(!b[a]){var c=[];b[a]=function(){c.push([c.slice.call(arguments),e.d(),d.ue_id])};b[a].replay=function(b){for(var a;a=c.shift();)b(a[0],a[1],a[2])};b[a].isStub=1}};e.exec=function(b,a){return function(){if(1==window.ueinit)try{return b.apply(this,arguments)}catch(c){ueLogError(c,{attribution:a||"undefined",logLevel:"WARN"})}}}})(ue_csm);
+
+
+    var ue_err_chan = 'jserr-rw';
+(function(d,e){function h(f,b){if(!(a.ec>a.mxe)&&f){a.ter.push(f);b=b||{};var c=f.logLevel||b.logLevel;c&&c!==k&&c!==m&&c!==n&&c!==p||a.ec++;c&&c!=k||a.ecf++;b.pageURL=""+(e.location?e.location.href:"");b.logLevel=c;b.attribution=f.attribution||b.attribution;a.erl.push({ex:f,info:b})}}function l(a,b,c,e,g){d.ueLogError({m:a,f:b,l:c,c:""+e,err:g,fromOnError:1,args:arguments},g?{attribution:g.attribution,logLevel:g.logLevel}:void 0);return!1}var k="FATAL",m="ERROR",n="WARN",p="DOWNGRADED",a={ec:0,ecf:0,
+pec:0,ts:0,erl:[],ter:[],mxe:50,startTimer:function(){a.ts++;setInterval(function(){d.ue&&a.pec<a.ec&&d.uex("at");a.pec=a.ec},1E4)}};l.skipTrace=1;h.skipTrace=1;h.isStub=1;d.ueLogError=h;d.ue_err=a;e.onerror=l})(ue_csm,window);
+
+
+var ue_id = 'NX9YH5HXY5PG965D13SJ',
+    ue_url = '/alexa/console/ask/test/uedata',
+    ue_navtiming = 1,
+    ue_mid = 'ATVPDKIKX0DER',
+    ue_sid = '134-5300398-7648904',
+    ue_sn = 'alexasimulatorservice-web-na.iad.amazon.com',
+    ue_furl = 'fls-na.amazon.com',
+    ue_surl = 'https://unagi-na.amazon.com/1/events/com.amazon.csm.nexusclient.prod',
+    ue_int = 0,
+    ue_fcsn = 1,
+    ue_urt = 3,
+    ue_rpl_ns = 'cel-rpl',
+    ue_ddq = 1,
+    ue_fpf = '//fls-na.amazon.com/1/batch/1/OP/ATVPDKIKX0DER:134-5300398-7648904:NX9YH5HXY5PG965D13SJ$uedata=s:',
+    ue_rsc = 0,
+    ue_mcimp = 0,
+    ue_sbuimp = 1,
+    ue_crid = 0,
+
+    ue_swi = 1;
+function ue_viz(){(function(c,e,a){function k(b){if(c.ue.viz.length<p&&!l){var a=b.type;b=b.originalEvent;/^focus./.test(a)&&b&&(b.toElement||b.fromElement||b.relatedTarget)||(a=e[m]||("blur"==a||"focusout"==a?"hidden":"visible"),c.ue.viz.push(a+":"+(+new Date-c.ue.t0)),"visible"==a&&(ue.isl&&uex("at"),l=1))}}for(var l=0,f,g,m,n=["","webkit","o","ms","moz"],d=0,p=20,h=0;h<n.length&&!d;h++)if(a=n[h],f=(a?a+"H":"h")+"idden",d="boolean"==typeof e[f])g=a+"visibilitychange",m=(a?a+"V":"v")+"isibilityState";
+k({});d&&e.addEventListener(g,k,0);c.ue&&d&&(c.ue.pageViz={event:g,propHid:f})})(ue_csm,document,window)};
+
+(function(a,g,n){function z(a){return a&&a.replace&&a.replace(/^\s+|\s+$/g,"")}function q(a){return"undefined"===typeof a}function A(a){try{a+="=";var b=n.cookie.indexOf(a),c=n.cookie.indexOf(";",b+a.length);-1===c&&(c=n.cookie.length);if(0<=b)return n.cookie.substring(b+a.length,c).trim()}catch(l){}}function v(e,b,c,l){var g=l||+new Date,h;a.ueam&&a.ueam(b,e,l);if(b||q(c)){if(e)for(h in l=b?f("t",b)||f("t",b,{}):a.ue.t,l[e]=g,c)c.hasOwnProperty(h)&&f(h,b,c[h]);return g}}function f(e,b,c){var l=a.ue,
+f=b&&b!=l.id?l.sc[b]:l;f||(f=l.sc[b]={});"id"==e&&c&&(l.cfa2=1);return f[e]=c||f[e]}function C(e,b,c,f,g){c="on"+c;var h=b[c];"function"===typeof h?e&&(a.ue.h[e]=h):h=function(){};b[c]=g?function(a){f(a);h(a)}:function(a){h(a);f(a)};b[c]&&(b[c].isUeh=1)}function D(e,b,c){function l(b,c){var d=[b],H=0,g={},l,h;c?(d.push("m=1"),g[c]=1):g=a.ue.sc;for(h in g)if(g.hasOwnProperty(h)){var k=f("wb",h),m=f("t",h)||{},p=f("t0",h)||a.ue.t0,n;if(c||2==k){k=k?H++:"";d.push("sc"+k+"="+h);for(n in m)3>=n.length&&
+!q(m[n])&&null!==m[n]&&d.push(n+k+"="+(m[n]-p));d.push("t"+k+"="+m[e]);if(f("ctb",h)||f("wb",h))l=1}}!u&&l&&d.push("ctb=1");return d.join("&")}function B(b,c,d,e){if(b){var f=a.ue_err,h;a.ue_url&&(!e||!a.ue.log)&&b&&0<b.length&&(h=new Image,a.ue.iel.push(h),h.src=b);I?a.ue_fpf&&g.encodeURIComponent&&b&&(e=new Image,b=""+a.ue_fpf+g.encodeURIComponent(b)+":"+(+new Date-a.ue_t0),a.ue.iel.push(e),e.src=b):a.ue.log&&(h=g.chrome&&"ul"==c,a.ue.log(b,"uedata",a.ue_svi?{n:1,img:!e&&h?1:0}:{n:1}),a.ue.ielf.push(b));
+f&&!f.ts&&f.startTimer();a.ue.b&&(f=a.ue.b,a.ue.b="",B(f,c,d,1))}}function h(b){if(!ue.collected){var c=b.timing,e=b.navigation,d=ue.t;c&&(d.na_=c.navigationStart,d.ul_=c.unloadEventStart,d._ul=c.unloadEventEnd,d.rd_=c.redirectStart,d._rd=c.redirectEnd,d.fe_=c.fetchStart,d.lk_=c.domainLookupStart,d._lk=c.domainLookupEnd,d.co_=c.connectStart,d._co=c.connectEnd,d.sc_=c.secureConnectionStart,d.rq_=c.requestStart,d.rs_=c.responseStart,d._rs=c.responseEnd,d.dl_=c.domLoading,d.di_=c.domInteractive,d.de_=
+c.domContentLoadedEventStart,d._de=c.domContentLoadedEventEnd,d._dc=c.domComplete,d.ld_=c.loadEventStart,d._ld=c.loadEventEnd,c=d.na_,b="function"!==typeof b.now||q(c)?0:new Date(c+b.now())-new Date,d.ntd=b+a.ue.t0);e&&(d.ty=e.type+a.ue.t0,d.rc=e.redirectCount+a.ue.t0);ue.collected=1}}function t(b){var c=r&&r.navigation?r.navigation.type:x,d=c&&2!=c,e=a.ue.bfini;a.ue.cfa2||(e&&1<e&&(b+="&bfform=1",d||(a.ue.isBFT=e-1)),2==c&&(b+="&bfnt=1",a.ue.isBFT=a.ue.isBFT||1),a.ue.ssw&&a.ue.isBFT&&(q(a.ue.isNRBF)&&
+(c=a.ue.ssw(a.ue.oid),c.e||q(c.val)||(a.ue.isNRBF=1<c.val?0:1)),q(a.ue.isNRBF)||(b+="&nrbf="+a.ue.isNRBF)),a.ue.isBFT&&!a.ue.isNRBF&&(b+="&bft="+a.ue.isBFT));return b}if(b||q(c)){for(var m in c)c.hasOwnProperty(m)&&f(m,b,c[m]);v("pc",b,c);m=f("id",b)||a.ue.id;var d=a.ue.url+"?"+e+"&v="+a.ue.v+"&id="+m,u=f("ctb",b)||f("wb",b),r=g.performance||g.webkitPerformance,k,p;u&&(d+="&ctb="+u);1<a.ueinit&&(d+="&ic="+a.ueinit);!a.ue._fi||"at"!=e||b&&b!=m||(d+=a.ue._fi());if(!("ld"!=e&&"ul"!=e||b&&b!=m)){if("ld"==
+e){try{g.onbeforeunload&&g.onbeforeunload.isUeh&&(g.onbeforeunload=null)}catch(y){}if(g.chrome)for(p=0;p<ue.ulh.length;p++)E("beforeunload",ue.ulh[p]);(p=n.ue_backdetect)&&p.ue_back&&p.ue_back.value++;a._uess&&(k=a._uess());a.ue.isl=1}ue._bf&&(d+="&bf="+ue._bf());a.ue_navtiming&&r&&r.timing&&(f("ctb",m,"1"),1==a.ue_navtiming&&v("tc",x,x,r.timing.navigationStart));r&&h(r);a.ue.t.hob=a.ue_hob;a.ue.t.hoe=a.ue_hoe;a.ue.ifr&&(d+="&ifr=1")}v(e,b,c);c="ld"==e&&b&&f("wb",b);var w;c||b&&b!==m||J(b);c||m==
+a.ue.oid||K((f("t",b)||{}).tc||+f("t0",b),+f("t0",b));a.ue_mbl&&a.ue_mbl.cnt&&!c&&(d+=a.ue_mbl.cnt());c?f("wb",b,2):"ld"==e&&(s.lid=z(m));for(w in a.ue.sc)if(1==f("wb",w))break;if(c){if(a.ue.s)return;d=l(d,null)}else p=l(d,null),p!=d&&(p=t(p),a.ue.b=p),k&&(d+=k),d=l(d,b||a.ue.id);d=t(d);if(a.ue.b||c)for(w in a.ue.sc)2==f("wb",w)&&delete a.ue.sc[w];k=0;ue._rt&&(d+="&rt="+ue._rt());c||(a.ue.s=0,(k=a.ue_err)&&0<k.ec&&k.pec<k.ec&&(k.pec=k.ec,d+="&ec="+k.ec+"&ecf="+k.ecf),k=f("ctb",b),f("t",b,{}));d&&
+a.ue.tag&&0<a.ue.tag().length&&(d+="&csmtags="+a.ue.tag().join("|"),a.ue.tag=a.ue.tagC());d&&a.ue.viz&&0<a.ue.viz.length&&(d+="&viz="+a.ue.viz.join("|"),a.ue.viz=[]);d&&!q(a.ue_pty)&&(d+="&pty="+a.ue_pty+"&spty="+a.ue_spty+"&pti="+a.ue_pti);d&&a.ue.tabid&&(d+="&tid="+a.ue.tabid);d&&a.ue.aftb&&(d+="&aftb=1");d&&a.ue.sbf&&(d+="&sbf=1");!a.ue._ui||b&&b!=m||(d+=a.ue._ui());a.ue.a=d;B(d,e,k,c)}}function J(a){var b=g.ue_csm_markers||{},c;for(c in b)b.hasOwnProperty(c)&&v(c,a,x,b[c])}function t(e,b,c){c=
+c||g;a.ue_pel&&window.EventTarget&&window.EventTarget.prototype&&window.EventTarget.prototype.addEventListener?window.EventTarget.prototype.addEventListener.call(c,e,b,!!window.ue_clf):c.addEventListener?c.addEventListener(e,b,!!window.ue_clf):c.attachEvent&&c.attachEvent("on"+e,b)}function E(e,b,c){c=c||g;a.ue_pel&&window.EventTarget&&window.EventTarget.prototype&&window.EventTarget.prototype.removeEventListener?window.EventTarget.prototype.removeEventListener.call(c,e,b,!!window.ue_clf):c.removeEventListener?
+c.removeEventListener(e,b,!!window.ue_clf):c.detachEvent&&c.detachEvent("on"+e,b)}function F(){function e(){a.onUl()}function b(a){return function(){c[a]||(c[a]=1,D(a))}}var c=a.ue.r,f,q;a.onLd=b("ld");a.onLdEnd=b("ld");a.onUl=b("ul");f={stop:b("os")};g.chrome?(t("beforeunload",e),ue.ulh.push(e)):f[L]=a.onUl;for(q in f)f.hasOwnProperty(q)&&C(0,g,q,f[q]);a.ue_viz&&ue_viz();M&&t("readystatechange",N,n);t("load",a.onLd);v("ue")}function N(){"complete"===n.readyState&&(O?setTimeout(G,0):G())}function G(){var e;
+if(!(e=ue.isl)&&(e=P))a:{e=n.images||[];for(var b=0;b<e.length;b++)if(!1===e[b].complete){e=!1;break a}e=!0}if(!e)a.onUl()}function K(e,b){a.ue_mbl&&a.ue_mbl.ajax&&a.ue_mbl.ajax(e,b);a.ue.tag("ajax-transition")}a.ueinit=(a.ueinit||0)+1;var s={t0:g.aPageStart||a.ue_t0,id:a.ue_id,url:a.ue_url,rid:a.ue_id,a:"",b:"",h:{},r:{ld:0,oe:0,ul:0},s:1,t:{},sc:{},iel:[],ielf:[],fc_idx:{},viz:[],v:"0.202107.0",d:a.ue&&a.ue.d,log:a.ue&&a.ue.log,clog:a.ue&&a.ue.clog,onflush:a.ue&&a.ue.onflush,onunload:a.ue&&a.ue.onunload,
+stub:a.ue&&a.ue.stub,lr:a.ue&&a.ue.lr,exec:a.ue&&a.ue.exec,event:a.ue&&a.ue.event,onSushiUnload:a.ue&&a.ue.onSushiUnload,onSushiFlush:a.ue&&a.ue.onSushiFlush,ulh:[],cfa2:0},I=a.ue_fpf?1:0,M=1===a.ue_rsc||3===a.ue_rsc,O=3===a.ue_rsc,P=1===a.ue_rsc,L="beforeunload",x;if(1===a.ue_crid||2===a.ue_crid&&"000-0000000-8675309"===a.ue_sid){var u=A("cdn-rid"),y=A("session-id");u&&y&&(a.ue_fpf=a.ue_fpf.replace(a.ue_sid,y).replace(a.ue_id,u),a.ue_id=s.id=s.rid=u,a.ue_sid=y)}s.oid=z(s.id);s.lid=z(s.id);a.ue=s;
+a.ue._t0=a.ue.t0;a.ue.tagC=function(){var a={};return function(b){b&&(a[b]=1);b=[];for(var c in a)a.hasOwnProperty(c)&&b.push(c);return b}};a.ue.tag=a.ue.tagC();a.ue.ifr=g.top!==g.self||g.frameElement?1:0;ue.attach=t;ue.detach=E;ue.reset=function(e,b){e&&(a.ue_cel&&a.ue_cel.reset(),a.ue.t0=+new Date,a.ue.rid=e,a.ue.id=e,a.ue.fc_idx={},a.ue.viz=[])};a.uei=F;a.ueh=C;a.ues=f;a.uet=v;a.uex=D;F()})(ue_csm,window,ue_csm.document);
+
+
+ue.stub(ue,"log");ue.stub(ue,"onunload");ue.stub(ue,"onflush");
+(function(c){var a=c.ue;a.cv={};a.cv.scopes={};a.count=function(d,c,b){var e={},f=a.cv,g=b&&0===b.c;e.counter=d;e.value=c;e.t=a.d();b&&b.scope&&(f=a.cv.scopes[b.scope]=a.cv.scopes[b.scope]||{},e.scope=b.scope);if(void 0===c)return f[d];f[d]=c;d=0;b&&b.bf&&(d=1);ue_csm.ue_sclog||!a.clog||0!==d||g?a.log&&a.log(e,"csmcount",{c:1,bf:d}):a.clog(e,"csmcount",{bf:d})};a.count("baselineCounter2",1);a&&a.event&&(a.event({requestId:c.ue_id||"rid",server:c.ue_sn||"sn",obfuscatedMarketplaceId:c.ue_mid||"mid"},
+"csm","csm.CSMBaselineEvent.4"),a.count("nexusBaselineCounter",1,{bf:1}))})(ue_csm);
+
+
+
+var ue_hoe = +new Date();
+}
+window.ueinit = window.ue_ihb;
+</script>
+
+<!-- 10083zs9kquvbt5ur9pnugvtq5ptl5h1wx2 -->
+<script type="text/javascript">
+window.ue_ihe = (window.ue_ihe || 0) + 1;
+if (window.ue_ihe === 1) {
+(function(e,c){function h(b,a){f.push([b,a])}function g(b,a){if(b){var c=e.head||e.getElementsByTagName("head")[0]||e.documentElement,d=e.createElement("script");d.async="async";d.src=b;d.setAttribute("crossorigin","anonymous");a&&a.onerror&&(d.onerror=a.onerror);a&&a.onload&&(d.onload=a.onload);c.insertBefore(d,c.firstChild)}}function k(){ue.uels=g;for(var b=0;b<f.length;b++){var a=f[b];g(a[0],a[1])}ue.deffered=1}var f=[];c.ue&&(ue.uels=h,c.ue.attach&&c.ue.attach("load",k))})(document,window);
+(function(k,l,g){function m(a){c||(c=b[a.type].id,"undefined"===typeof a.clientX?(e=a.pageX,f=a.pageY):(e=a.clientX,f=a.clientY),2!=c||h&&(h!=e||n!=f)?(r(),d.isl&&l.setTimeout(function(){p("at",d.id)},0)):(h=e,n=f,c=0))}function r(){for(var a in b)b.hasOwnProperty(a)&&d.detach(a,m,b[a].parent)}function s(){for(var a in b)b.hasOwnProperty(a)&&d.attach(a,m,b[a].parent)}function t(){var a="";!q&&c&&(q=1,a+="&ui="+c);return a}var d=k.ue,p=k.uex,q=0,c=0,h,n,e,f,b={click:{id:1,parent:g},mousemove:{id:2,
+parent:g},scroll:{id:3,parent:l},keydown:{id:4,parent:g}};d&&p&&(s(),d._ui=t)})(ue_csm,window,document);
+
+
+
+    if (window.ue && window.ue.uels) {
+            var cel_widgets = [ { "c":"celwidget" } ];
+
+                ue.uels("https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/ClientSideMetricsAUIJavascript@jserrorsForester.0acd236281a4d93774c265b3bec043f2087a43c2._V2_.js");
+    }
+
+(function(k,c){function l(a,b){return a.filter(function(a){return a.initiatorType==b})}function f(a,c){if(b.t[a]){var g=b.t[a]-b._t0,e=c.filter(function(a){return 0!==a.responseEnd&&m(a)<g}),f=l(e,"script"),h=l(e,"link"),k=l(e,"img"),n=e.map(function(a){return a.name.split("/")[2]}).filter(function(a,b,c){return a&&c.lastIndexOf(a)==b}),q=e.filter(function(a){return a.duration<p}),s=g-Math.max.apply(null,e.map(m))<r|0;"af"==a&&(b._afjs=f.length);return a+":"+[e[d],f[d],h[d],k[d],n[d],q[d],s].join("-")}}
+function m(a){return a.responseEnd-(b._t0-c.timing.navigationStart)}function n(){var a=c[h]("resource"),d=f("cf",a),g=f("af",a),a=f("ld",a);delete b._rt;b._ld=b.t.ld-b._t0;b._art&&b._art();return[d,g,a].join("_")}var p=20,r=50,d="length",b=k.ue,h="getEntriesByType";b._rre=m;b._rt=c&&c.timing&&c[h]&&n})(ue_csm,window.performance);
+
+
+(function(s,f){function m(b,e,c){var a=l;f.ue_cmi&&(a=t);c=c||new Date(+new Date+a);c="expires="+c.toUTCString();n.cookie=b+"="+e+";"+c+";path=/"}function p(b){b+="=";for(var e=n.cookie.split(";"),c=0;c<e.length;c++){for(var a=e[c];" "==a.charAt(0);)a=a.substring(1);if(0===a.indexOf(b))return decodeURIComponent(a.substring(b.length,a.length))}return""}function q(b,e,c){if(!e)return b;-1<b.indexOf("{")&&(b="");for(var a=b.split("&"),g,d=!1,f=!1,h=0;h<a.length;h++)g=a[h].split(":"),g[0]==e?(!c||d?a.splice(h,
+1):(g[1]=c,a[h]=g.join(":")),f=d=!0):2>g.length&&(a.splice(h,1),f=!0);f&&(b=a.join("&"));!d&&c&&(0<b.length&&(b+="&"),b+=e+":"+c);return b}var k=s.ue||{},l=6048E5,t=100*l,n=ue_csm.document||f.document,r=null,d;a:{try{d=f.localStorage;break a}catch(u){}d=void 0}k.count&&k.count("csm.cookieSize",document.cookie.length);k.cookie={get:p,set:m,updateCsmHit:function(b,e,c){try{var a;if(!(a=r)){var g;a:{try{if(d&&d.getItem){g=d.getItem("csm-hit");break a}}catch(k){}g=void 0}a=g||p("csm-hit")||"{}"}a=q(a,
+b,e);f.ue_cmi&&(a=q(a,"t",+new Date));r=a;try{d&&d.setItem&&d.setItem("csm-hit",a)}catch(l){}m("csm-hit",a,c)}catch(h){"function"==typeof f.ueLogError&&ueLogError(Error("Cookie manager: "+h.message),{logLevel:"WARN"})}}}})(ue_csm,window);
+
+(function(l,d){function c(b){b="";var c=a.isBFT?"b":"s",d=""+a.oid,f=""+a.lid,g=d;d!=f&&20==f.length&&(c+="a",g+="-"+f);a.tabid&&(b=a.tabid+"+");b+=c+"-"+g;b!=e&&100>b.length&&(e=b,a.cookie?a.cookie.updateCsmHit(m,b+("|"+ +new Date)):document.cookie="csm-hit="+b+("|"+ +new Date)+n+"; path=/")}function p(){e=0}function h(b){!0===d[a.pageViz.propHid]?e=0:!1===d[a.pageViz.propHid]&&c({type:"visible"})}var n="; expires="+(new Date(+new Date+6048E5)).toGMTString(),m="tb",e,a=l.ue||{},k=a.pageViz&&a.pageViz.event&&
+a.pageViz.propHid;a.attach&&(a.attach("click",c),a.attach("keyup",c),k||(a.attach("focus",c),a.attach("blur",p)),k&&(a.attach(a.pageViz.event,h,d),h({})));a.aftb=1})(ue_csm,document);
+
+
+ue_csm.ue.stub(ue,"impression");
+
+
+(function(k,d,h){function f(a,c,b){a&&a.indexOf&&0===a.indexOf("http")&&0!==a.indexOf("https")&&l(s,c,a,b)}function g(a,c,b){a&&a.indexOf&&(location.href.split("#")[0]!=a&&null!==a&&"undefined"!==typeof a||l(t,c,a,b))}function l(a,c,b,e){m[b]||(e=u&&e?n(e):"N/A",d.ueLogError&&d.ueLogError({message:a+c+" : "+b,logLevel:v,stack:"N/A"},{attribution:e}),m[b]=1,p++)}function e(a,c){if(a&&c)for(var b=0;b<a.length;b++)try{c(a[b])}catch(d){}}function q(){return d.performance&&d.performance.getEntriesByType?
+d.performance.getEntriesByType("resource"):[]}function n(a){if(a.id)return"//*[@id='"+a.id+"']";var c;c=1;var b;for(b=a.previousSibling;b;b=b.previousSibling)b.nodeName==a.nodeName&&(c+=1);b=a.nodeName;1!=c&&(b+="["+c+"]");a.parentNode&&(b=n(a.parentNode)+"/"+b);return b}function w(){var a=h.images;a&&a.length&&e(a,function(a){var b=a.getAttribute("src");f(b,"img",a);g(b,"img",a)})}function x(){var a=h.scripts;a&&a.length&&e(a,function(a){var b=a.getAttribute("src");f(b,"script",a);g(b,"script",a)})}
+function y(){var a=h.styleSheets;a&&a.length&&e(a,function(a){if(a=a.ownerNode){var b=a.getAttribute("href");f(b,"style",a);g(b,"style",a)}})}function z(){if(A){var a=q();e(a,function(a){f(a.name,a.initiatorType)})}}function B(){e(q(),function(a){g(a.name,a.initiatorType)})}function r(){var a;a=d.location&&d.location.protocol?d.location.protocol:void 0;"https:"==a&&(z(),w(),x(),y(),B(),p<C&&setTimeout(r,D))}var s="[CSM] Insecure content detected ",t="[CSM] Ajax request to same page detected ",v="WARN",
+m={},p=0,D=k.ue_nsip||1E3,C=5,A=1==k.ue_urt,u=!0;ue_csm.ue_disableNonSecure||(d.performance&&d.performance.setResourceTimingBufferSize&&d.performance.setResourceTimingBufferSize(300),r())})(ue_csm,window,document);
+
+(function(d){d.ue_cel_stub||(d.ue_cel_stub=function(){var b={};return{registerModule:function(a,c){b[a]||(b[a]=c,b[a].on())},replayModule:function(a,c){b[a]&&(b[a].replay(c),b[a].off(),delete b[a])}}}())})(ue_csm);
+(function(a,d,h){a.ue_mcm_stub||a.ue&&a.ue.isBF||(a.ue_mcm_stub=function(){function e(a){var b=c.d(),e=(d.body||{}).scrollWidth,k=(d.body||{}).scrollHeight,f;h&&"function"===typeof h.now&&a.timeStamp&&(f=h.now()-a.timeStamp,f=parseFloat(f.toFixed(2)));g.push({rawEvent:a,additionalData:{ots:b,ow:e,oh:k,odt:f}})}var c=a.ue,g=[];return{on:function(){c.attach&&c.attach("click",e,d)},off:function(){c.detach&&c.detach("click",e,d)},replay:function(a){for(var b=0;b<g.length;b++)a(g[b].rawEvent,g[b].additionalData)}}}(),
+a.ue_cel_stub&&a.ue_cel_stub.registerModule("mcm",a.ue_mcm_stub))})(ue_csm,document,window.performance);
+
+
+
+if(window.ue&&uet) { uet('bb'); }
+
+}
+</script>
+<!-- csm header end -->
+
+<!-- csm body start -->
+    <img style="display:none;visibility:hidden;" src="//fls-na.amazon.com/1/batch/1/OP/ATVPDKIKX0DER:134-5300398-7648904:NX9YH5HXY5PG965D13SJ$uedata=s:%2Falexa%2Fconsole%2Fask%2Ftest%2Fuedata%3Fstaticb%26id%3DNX9YH5HXY5PG965D13SJ:0" alt="" onload="window.ue_sbl &amp;&amp; window.ue_sbl();" height="1" width="1">
+
+
+<script type="text/javascript">
+
+(function(){function l(a){for(var c=b.location.search.substring(1).split("&"),e=0;e<c.length;e++){var d=c[e].split("=");if(d[0]===a)return d[1]}}window.amzn=window.amzn||{};amzn.copilot=amzn.copilot||{};var b=window,f=document,g=b.P||b.AmazonUIPageJS,h=f.head||f.getElementsByTagName("head")[0],m=0,n=0;amzn.copilot.checkCoPilotSession=function(){f.cookie.match("cpidv")&&("undefined"!==typeof jQuery&&k(jQuery),g&&g.when&&g.when("jQuery").execute(function(a){k(a)}),b.amznJQ&&b.amznJQ.available&&b.amznJQ.available("jQuery",
+function(){k(jQuery)}),b.jQuery||g||b.amznJQ||q())};var q=function(){m?b.ue&&"function"===typeof b.ue.count&&b.ue.count("cpJQUnavailable",1):(m=1,f.addEventListener?f.addEventListener("DOMContentLoaded",amzn.copilot.checkCoPilotSession,!1):f.attachEvent&&f.attachEvent("onreadystatechange",function(){"complete"===f.readyState&&amzn.copilot.checkCoPilotSession()}))},k=function(a){if(!n){n=1;amzn.copilot.jQuery=a;a=l("debugJS");var c="https:"===b.location.protocol?1:0,e=1;url="/gp/copilot/handlers/copilot_strings_resources.html";
+window.texas&&texas.locations&&(url=texas.locations.makeUrl(url));g&&g.AUI_BUILD_DATE&&(e=0);amzn.copilot.jQuery.ajax&&amzn.copilot.jQuery.ajax({url:url,dataType:"json",data:{isDebug:a,isSecure:c,includeAUIP:e},success:function(a){amzn.copilot.vip=a.serviceEndPoint;amzn.copilot.enableMultipleTabSession=a.isFollowMe;r(a)},error:function(){b.ue.count("cpLoadResourceError",1)}})}},r=function(a){var c=amzn.copilot.jQuery,e=function(){amzn.copilot.setup(c.extend({isContinuedSession:!0},a))};a.CSSUrls&&
+c.each(a.CSSUrls[0],function(a,c){var b=f.createElement("link");b.type="text/css";b.rel="stylesheet";b.href=c;h.appendChild(b)});a.CSSTag&&s(a.CSSTag);if(a.JSUrls){var d=l("forceSynchronousJS"),b=a.JSUrls[0];c.each(b,function(a,c){a===b.length-1?p(c,d,e):p(c,d)})}a.JSTag&&(t(a.JSTag),P.when("CSCoPilotPresenterAsset").execute(function(){e()}))},t=function(a){var c=f.createElement("div");c.innerHTML=a;a=0;for(var b=c.children.length;a<b;a++){var d=f.createElement("script");d.type="text/javascript";
+d.innerHTML=c.children[a].innerHTML;h.appendChild(d)}},s=function(a){var b=f.createElement("div");b.innerHTML=a;a=0;for(var e=b.children.length;a<e;a++)h.appendChild(b.children[a])},p=function(a,b,e){var d=f.createElement("script");d.type="text/javascript";d.src=a;d.async=b?!1:!0;e&&(d.onload=e);h.appendChild(d)}})();
+
+amzn.copilot.checkCoPilotSession();
+
+</script>
+
+<div id="be" style="display:none;visibility:hidden;"><form name="ue_backdetect" action="get"><input name="ue_back" value="2" type="hidden"></form>
+
+
+<script type="text/javascript">
+window.ue_ibe = (window.ue_ibe || 0) + 1;
+if (window.ue_ibe === 1) {
+
+var ue_mbl=ue_csm.ue.exec(function(e,a){function l(f){b=f||{};a.AMZNPerformance=b;b.transition=b.transition||{};b.timing=b.timing||{};e.ue.exec(m,"csm-android-check")()&&b.tags instanceof Array&&(f=-1!=b.tags.indexOf("usesAppStartTime")||b.transition.type?!b.transition.type&&-1<b.tags.indexOf("usesAppStartTime")?"warm-start":void 0:"view-transition",f&&(b.transition.type=f));"reload"===c._nt&&e.ue_orct||"intrapage-transition"===c._nt?a.performance&&performance.timing&&performance.timing.navigationStart?
+b.timing.transitionStart=a.performance.timing.navigationStart:delete b.timing.transitionStart:"undefined"===typeof c._nt&&a.performance&&performance.timing&&performance.timing.navigationStart&&a.history&&"function"===typeof a.History&&"object"===typeof a.history&&history.length&&1!=history.length&&(b.timing.transitionStart=a.performance.timing.navigationStart);f=b.transition;var d;d=c._nt?c._nt:void 0;f.subType=d;a.ue&&a.ue.tag&&a.ue.tag("has-AMZNPerformance");c.isl&&a.uex&&uex("at","csm-timing");
+n()}function p(b){a.ue&&a.ue.count&&a.ue.count("csm-cordova-plugin-failed",1)}function m(){return a.webclient&&"function"===typeof a.webclient.getRealClickTime?a.cordova&&a.cordova.platformId&&"ios"==a.cordova.platformId?!1:!0:!1}function n(){try{P.register("AMZNPerformance",function(){return b})}catch(a){}}function h(){if(!b)return"";ue_mbl.cnt=null;for(var a=b.timing,d=b.transition,a=["mts",k(a.transitionStart),"mps",k(a.processStart),"mtt",d.type,"mtst",d.subType,"mtlt",d.launchType],d="",c=0;c<
+a.length;c+=2){var e=a[c],g=a[c+1];"undefined"!==typeof g&&(d+="&"+e+"="+g)}return d}function k(a){if("undefined"!==typeof a&&"undefined"!==typeof g)return a-g}function q(a,c){b&&(g=c,b.timing.transitionStart=a,b.transition.type="view-transition",b.transition.subType="ajax-transition",b.transition.launchType="normal",ue_mbl.cnt=h)}var c=e.ue||{},g=e.ue_t0,b;if(a.P&&a.P.when&&a.P.register)return a.P.when("CSMPlugin").execute(function(a){a.buildAMZNPerformance&&a.buildAMZNPerformance({successCallback:l,
+failCallback:p})}),{cnt:h,ajax:q}},"mobile-timing")(ue_csm,window);
+
+(function(d){d._uess=function(){var a="";screen&&screen.width&&screen.height&&(a+="&sw="+screen.width+"&sh="+screen.height);var b=function(a){var b=document.documentElement["client"+a];return"CSS1Compat"===document.compatMode&&b||document.body["client"+a]||b},c=b("Width"),b=b("Height");c&&b&&(a+="&vw="+c+"&vh="+b);return a}})(ue_csm);
+
+(function(a){var b=document.ue_backdetect;b&&b.ue_back&&a.ue&&(a.ue.bfini=b.ue_back.value);a.uet&&a.uet("be");a.onLdEnd&&(window.addEventListener?window.addEventListener("load",a.onLdEnd,!1):window.attachEvent&&window.attachEvent("onload",a.onLdEnd));a.ueh&&a.ueh(0,window,"load",a.onLd,1);a.ue&&a.ue.tag&&(a.ue_furl&&a.ue_furl.split?(b=a.ue_furl.split("."))&&b[0]&&a.ue.tag(b[0]):a.ue.tag("nofls"))})(ue_csm);
+(function(g,h){function d(a,d){var b={};if(!e||!f)try{var c=h.sessionStorage;c?a&&("undefined"!==typeof d?c.setItem(a,d):b.val=c.getItem(a)):f=1}catch(g){e=1}e&&(b.e=1);return b}var b=g.ue||{},a="",f,e,c,a=d("csmtid");f?a="NA":a.e?a="ET":(a=a.val,a||(a=b.oid||"NI",d("csmtid",a)),c=d(b.oid),c.e||(c.val=c.val||0,d(b.oid,c.val+1)),b.ssw=d);b.tabid=a})(ue_csm,window);
+ue_csm.ue.exec(function(e,f){var a=e.ue||{},b=a._wlo,d;if(a.ssw){d=a.ssw("CSM_previousURL").val;var c=f.location,b=b?b:c&&c.href?c.href.split("#")[0]:void 0;c=(b||"")===a.ssw("CSM_previousURL").val;!c&&b&&a.ssw("CSM_previousURL",b);d=c?"reload":d?"intrapage-transition":"first-view"}else d="unknown";a._nt=d},"NavTypeModule")(ue_csm,window);
+ue_csm.ue.exec(function(c,a){function g(a){a.run(function(e){d.tag("csm-feature-"+a.name+":"+e);d.isl&&c.uex("at")})}if(a.addEventListener)for(var d=c.ue||{},f=[{name:"touch-enabled",run:function(b){var e=function(){a.removeEventListener("touchstart",c,!0);a.removeEventListener("mousemove",d,!0)},c=function(){b("true");e()},d=function(){b("false");e()};a.addEventListener("touchstart",c,!0);a.addEventListener("mousemove",d,!0)}}],b=0;b<f.length;b++)g(f[b])},"csm-features")(ue_csm,window);
+
+
+(function(b,c){var a=c.images;a&&a.length&&b.ue.count("totalImages",a.length)})(ue_csm,document);
+(function(b){function c(){var d=[];a.log&&a.log.isStub&&a.log.replay(function(a){e(d,a)});a.clog&&a.clog.isStub&&a.clog.replay(function(a){e(d,a)});d.length&&(a._flhs+=1,n(d),p(d))}function g(){a.log&&a.log.isStub&&(a.onflush&&a.onflush.replay&&a.onflush.replay(function(a){a[0]()}),a.onunload&&a.onunload.replay&&a.onunload.replay(function(a){a[0]()}),c())}function e(d,b){var c=b[1],f=b[0],e={};a._lpn[c]=(a._lpn[c]||0)+1;e[c]=f;d.push(e)}function n(b){q&&(a._lpn.csm=(a._lpn.csm||0)+1,b.push({csm:{k:"chk",
+f:a._flhs,l:a._lpn,s:"inln"}}))}function p(a){if(h)a=k(a),b.navigator.sendBeacon(l,a);else{a=k(a);var c=new b[f];c.open("POST",l,!0);c.setRequestHeader&&c.setRequestHeader("Content-type","text/plain");c.send(a)}}function k(a){return JSON.stringify({rid:b.ue_id,sid:b.ue_sid,mid:b.ue_mid,mkt:b.ue_mkt,sn:b.ue_sn,reqs:a})}var f="XMLHttpRequest",q=1===b.ue_ddq,a=b.ue,r=b[f]&&"withCredentials"in new b[f],h=b.navigator&&b.navigator.sendBeacon,l="//"+b.ue_furl+"/1/batch/1/OE/",m=b.ue_fci_ft||5E3;a&&(r||h)&&
+(a._flhs=a._flhs||0,a._lpn=a._lpn||{},a.attach&&(a.attach("beforeunload",g),a.attach("pagehide",g)),m&&b.setTimeout(c,m),a._ffci=c)})(window);
+
+
+ue_csm.ue._rtn = 1;
+(function(e,f){function h(a){a=a.split("?")[0]||a;a=a.replace("http://","").replace("https://","").replace("resource://","").replace("res://","").replace("undefined://","").replace("chrome://","").replace(/\*/g,"").replace(/!/g,"").replace(/~/g,"");var b=a.split("/");a=a.substr(a.lastIndexOf("/")+1);b.splice(-1);b=b.map(function(a){c[a]||(c[a]=(k++).toString(36));return c[a]});b.push(a);return b.join("!")}function l(){return f.getEntriesByType("resource").filter(function(a){return d._rre(a)<d._ld}).sort(function(a,
+b){return a.responseEnd-b.responseEnd}).splice(0,m).map(function(a){var b=[],c;for(c in a)g[c]&&a[c]&&b.push(g[c]+Math.max(a[c]|0,-1).toString(36));b.push("i"+a.initiatorType);(1==d._rtn&&d._afjs>n||2==d._rtn)&&b.push("n"+h(a.name));return b.join("_")}).join("*")}function p(){var a="pm",b;for(b in c)c.hasOwnProperty(b)&&(a+="*"+c[b]+"_"+b);return a}function q(){d.log({k:"rtiming",value:l()+"~"+p()},"csm")}if(f&&f.getEntriesByType&&Array.prototype.map&&Array.prototype.filter&&e.ue&&e.ue.log){var g=
+{connectStart:"c",connectEnd:"C",domainLookupStart:"d",domainLookupEnd:"D",duration:"z",encodedBodySize:"e",decodedBodySize:"E",fetchStart:"f",redirectStart:"r",redirectEnd:"R",requestStart:"q",responseStart:"s",responseEnd:"S",startTime:"a",transferSize:"t"},d=e.ue,c={},k=1,n=20,m=200;d&&d._rre&&(d._art=function(){d._ld&&window.setTimeout(q,0)})}})(ue_csm||{},window.performance);
+
+
+(function(c,d){var b=c.ue,a=d.navigator;b&&b.tag&&a&&(a=a.connection||a.mozConnection||a.webkitConnection)&&a.type&&b.tag("netInfo:"+a.type)})(ue_csm,window);
+
+
+(function(c,d){function h(a,b){for(var c=[],d=0;d<a.length;d++){var e=a[d],f=b.encode(e);if(e[k]){var g=b.metaSep,e=e[k],l=b.metaPairSep,h=[],m=void 0;for(m in e)e.hasOwnProperty(m)&&h.push(m+"="+e[m]);e=h.join(l);f+=g+e}c.push(f)}return c.join(b.resourceSep)}function s(a){var b=a[k]=a[k]||{};b[t]||(b[t]=c.ue_mid);b[u]||(b[u]=c.ue_sid);b[f]||(b[f]=c.ue_id);b.csm=1;a="//"+c.ue_furl+"/1/"+a[v]+"/1/OP/"+a[w]+"/"+a[x]+"/"+h([a],y);if(n)try{n.call(d[p],a)}catch(g){c.ue.sbf=1,(new Image).src=a}else(new Image).src=
+a}function q(){g&&g.isStub&&g.replay(function(a,b,c){a=a[0];b=a[k]=a[k]||{};b[f]=b[f]||c;s(a)});l.impression=s;g=null}if(!(1<c.ueinit)){var k="metadata",x="impressionType",v="foresterChannel",w="programGroup",t="marketplaceId",u="session",f="requestId",p="navigator",l=c.ue||{},n=d[p]&&d[p].sendBeacon,r=function(a,b,c,d){return{encode:d,resourceSep:a,metaSep:b,metaPairSep:c}},y=r("","?","&",function(a){return h(a.impressionData,z)}),z=r("/",":",",",function(a){return a.featureName+":"+h(a.resources,
+A)}),A=r(",","@","|",function(a){return a.id}),g=l.impression;n?q():(l.attach("load",q),l.attach("beforeunload",q));try{d.P&&d.P.register&&d.P.register("impression-client",function(){})}catch(B){c.ueLogError(B,{logLevel:"WARN"})}}})(ue_csm,window);
+
+
+
+var ue_pty = "getWebsite";
+
+
+
+
+var ue_adb = 4;
+var ue_adb_rtla = 1;
+ue_csm.ue.exec(function(w,a){function q(){if(d&&f){var a;a:{try{a=d.getItem(g);break a}catch(c){}a=void 0}if(a)return b=a,!0}return!1}function r(){b=h;k();if(f)try{d.setItem(g,b)}catch(a){}}function s(){b=1===a.ue_adb_chk?l:h;k();if(f)try{d.setItem(g,b)}catch(c){}}function m(){a.ue_adb_rtla&&c&&0<c.ec&&!1===n&&(c.elh=null,ueLogError({m:"Hit Info",fromOnError:1},{logLevel:"INFO",adb:b}),n=!0)}function k(){e.tag(b);e.isl&&a.uex&&uex("at",b);p&&p.updateCsmHit("adb",b);c&&0<c.ec?m():a.ue_adb_rtla&&c&&
+(c.elh=m)}function t(){return b}if(a.ue_adb){a.ue_fadb=a.ue_fadb||10;var e=a.ue,h="adblk_yes",l="adblk_no",b="adblk_unk",d;a:{try{d=a.localStorage;break a}catch(x){}d=void 0}var g="csm:adb",c=a.ue_err,p=e.cookie,f=void 0!==a.localStorage,u=Math.random()>1-1/a.ue_fadb,n=!1,v=q();u||!v?e.uels("https://m.media-amazon.com/images/G/01/csm/showads.v2.js",{onerror:r,onload:s}):k();a.ue_isAdb=t;a.ue_isAdb.unk="adblk_unk";a.ue_isAdb.no=l;a.ue_isAdb.yes=h}},"adb")(document,window);
+
+
+(function(l,m){var n=/^(https?:)?\/\//i,e=0,f,g={};f=setInterval(function(){for(var d=m.scripts,h=[],a,b,k=!1,c=0;c<d.length;c++)a=d[c].getAttribute("src"),b=d[c].getAttribute("crossorigin")||"",a&&"undefined"!==a&&n.test(a)&&!g.hasOwnProperty(a)&&"anonymous"!=b&&"use-credentials"!=b&&(g[a]=b,h.push(a),k=!0);k&&l.ue.log({k:"corsscanner",value:h},"csm");e++;5<=e&&clearInterval(f)},1E3)})(ue_csm,document);
+
+
+
+(function(c,l,m){function h(a){if(a)try{if(a.id)return"//*[@id='"+a.id+"']";var b,d=1,e;for(e=a.previousSibling;e;e=e.previousSibling)e.nodeName===a.nodeName&&(d+=1);b=d;var c=a.nodeName;1!==b&&(c+="["+b+"]");a.parentNode&&(c=h(a.parentNode)+"/"+c);return c}catch(f){return"DETACHED"}}function f(a){if(a&&a.getAttribute)return a.getAttribute(k)?a.getAttribute(k):f(a.parentElement)}var k="data-cel-widget",g=!1,d=[];(c.ue||{}).isBF=function(){try{var a=JSON.parse(localStorage["csm-bf"]||"[]"),b=0<=a.indexOf(c.ue_id);
+a.unshift(c.ue_id);a=a.slice(0,20);localStorage["csm-bf"]=JSON.stringify(a);return b}catch(d){return!1}}();c.ue_utils={getXPath:h,getFirstAscendingWidget:function(a,b){c.ue_cel&&c.ue_fem?!0===g?b(f(a)):d.push({element:a,callback:b}):b()},notifyWidgetsLabeled:function(){if(!1===g){g=!0;for(var a=f,b=0;b<d.length;b++)if(d[b].hasOwnProperty("callback")&&d[b].hasOwnProperty("element")){var c=d[b].callback,e=d[b].element;"function"===typeof c&&"function"===typeof a&&c(a(e))}d=null}},extractStringValue:function(a){if("string"===
+typeof a)return a}}})(ue_csm,window,document);
+
+
+(function(a,e){a.ue_cel||(a.ue_cel=function(){function f(a,b){b?b.r=z:b={r:z,c:1};!ue_csm.ue_sclog&&b.clog&&g.clog?g.clog(a,b.ns||d,b):b.glog&&g.glog?g.glog(a,b.ns||d,b):g.log(a,b.ns||d,b)}function h(){var a=b.length;if(0<a){for(var e=[],c=0;c<a;c++){var l=b[c].api;l.ready()?(l.on({ts:g.d,ns:d}),k.push(b[c]),f({k:"mso",n:b[c].name,t:g.d()})):e.push(b[c])}b=e}}function c(){if(!c.executed){for(var a=0;a<k.length;a++)k[a].api.off&&k[a].api.off({ts:g.d,ns:d});u();f({k:"eod",t0:g.t0,t:g.d()},{c:1,il:1});
+c.executed=1;for(a=0;a<k.length;a++)b.push(k[a]);k=[];clearTimeout(v);clearTimeout(q)}}function u(a){f({k:"hrt",t:g.d()},{c:1,il:1,n:a});s=Math.min(r,w*s);y()}function y(){clearTimeout(q);q=setTimeout(function(){u(!0)},s)}function t(){c.executed||u()}var w=1.5,r=e.ue_cel_max_hrt||3E4,b=[],k=[],d=a.ue_cel_ns||"cel",v,q,g=a.ue,l=a.uet,n=a.uex,z=g.rid,s=e.ue_cel_hrt_int||3E3,m=e.requestAnimationFrame||function(a){a()};if(g.isBF)f({k:"bft",t:g.d()});else{"function"==typeof l&&l("bb","csmCELLSframework",
+{wb:1});setTimeout(h,0);g.onunload(c);if(g.onflush)g.onflush(t);v=setTimeout(c,6E5);y();"function"==typeof n&&n("ld","csmCELLSframework",{wb:1});return{registerModule:function(a,c){b.push({name:a,api:c});f({k:"mrg",n:a,t:g.d()});h()},reset:function(a){f({k:"rst",t0:g.t0,t:g.d()});b=b.concat(k);k=[];for(var e=b.length,d=0;d<e;d++)b[d].api.off(),b[d].api.reset();z=a||g.rid;h();clearTimeout(v);v=setTimeout(c,6E5);c.executed=0},timeout:function(a,b){return e.setTimeout(function(){m(function(){c.executed||
+a()})},b)},log:f,off:c}}}())})(ue_csm,window);
+(function(a,e,f){a.ue_pdm||!a.ue_cel||ue.isBF||(a.ue_pdm=function(){function h(){if(d){var b={w:d.width,aw:d.availWidth,h:d.height,ah:d.availHeight,cd:d.colorDepth,pd:d.pixelDepth};l&&l.w===b.w&&l.h===b.h&&l.aw===b.aw&&l.ah===b.ah&&l.pd===b.pd&&l.cd===b.cd||(l=b,l.t=q(),l.k="sci",x(l))}var b=f.body||{},c=f.documentElement||{},b={w:Math.max(b.scrollWidth||0,b.offsetWidth||0,c.clientWidth||0,c.scrollWidth||0,c.offsetWidth||0),h:Math.max(b.scrollHeight||0,b.offsetHeight||0,c.clientHeight||0,c.scrollHeight||
+0,c.offsetHeight||0)};n&&n.w===b.w&&n.h===b.h||(n=b,n.t=q(),n.k="doi",x(n));v=a.ue_cel.timeout(h,g);s+=1}function c(){r("ebl","default",!1)}function u(){r("efo","default",!0)}function y(){r("ebl","app",!1)}function t(){r("efo","app",!0)}function w(){e.setTimeout(function(){f[B]?r("ebl","pageviz",!1):r("efo","pageviz",!0)},0)}function r(a,b,c){z!==c&&x({k:a,t:q(),s:b},{ff:!0===c?0:1});z=c}function b(){m.attach&&(p&&m.attach(C,w,f),D&&P.when("mash").execute(function(a){a&&a.addEventListener&&(a.addEventListener("appPause",
+y),a.addEventListener("appResume",t))}),m.attach("blur",c,e),m.attach("focus",u,e))}function k(){m.detach&&(p&&m.detach(C,w,f),D&&P.when("mash").execute(function(a){a&&a.removeEventListener&&(a.removeEventListener("appPause",y),a.removeEventListener("appResume",t))}),m.detach("blur",c,e),m.detach("focus",u,e))}var d,v,q,g,l,n,z=null,s=0,m=a.ue,x=a.ue_cel.log,E=a.uet,A=a.uex,p=!!m.pageViz,C=p&&m.pageViz.event,B=p&&m.pageViz.propHid,D=e.P&&e.P.when;"function"==typeof E&&E("bb","csmCELLSpdm",{wb:1});
+return{on:function(a){g=a.timespan||500;q=a.ts;d=e.screen;b();a=e.location;x({k:"pmd",o:a.origin,p:a.pathname,t:q()});h();"function"==typeof A&&A("ld","csmCELLSpdm",{wb:1})},off:function(a){clearTimeout(v);k();m.count&&m.count("cel.PDM.TotalExecutions",s)},ready:function(){return f.body&&a.ue_cel&&a.ue_cel.log},reset:function(){l=n=null}}}(),a.ue_cel&&a.ue_cel.registerModule("page module",a.ue_pdm))})(ue_csm,window,document);
+(function(a,e){a.ue_vpm||!a.ue_cel||ue.isBF||(a.ue_vpm=function(){function f(){var a=t(),b={w:e.innerWidth,h:e.innerHeight,x:e.pageXOffset,y:e.pageYOffset};c&&c.w==b.w&&c.h==b.h&&c.x==b.x&&c.y==b.y||(b.t=a,b.k="vpi",c=b,k(c,{clog:1}));u=0;w=t()-a;r+=1}function h(){u||(u=a.ue_cel.timeout(f,y))}var c,u,y,t,w=0,r=0,b=a.ue,k=a.ue_cel.log,d=a.uet,v=a.uex,q=b.attach,g=b.detach;"function"==typeof d&&d("bb","csmCELLSvpm",{wb:1});return{on:function(a){t=a.ts;y=a.timespan||100;f();q&&(q("scroll",h),q("resize",
+h));"function"==typeof v&&v("ld","csmCELLSvpm",{wb:1})},off:function(a){clearTimeout(u);g&&(g("scroll",h),g("resize",h));b.count&&(b.count("cel.VPI.TotalExecutions",r),b.count("cel.VPI.TotalExecutionTime",w),b.count("cel.VPI.AverageExecutionTime",w/r))},ready:function(){return a.ue_cel&&a.ue_cel.log},reset:function(){c=void 0},getVpi:function(){return c}}}(),a.ue_cel&&a.ue_cel.registerModule("viewport module",a.ue_vpm))})(ue_csm,window);
+(function(a,e,f){if(!a.ue_fem&&a.ue_cel&&a.ue_utils){var h=a.ue||{};!h.isBF&&!a.ue_fem&&f.querySelector&&e.getComputedStyle&&[].forEach&&(a.ue_fem=function(){function c(a,b){return a>b?3>a-b:3>b-a}function u(a,b){var d=e.pageXOffset,g=e.pageYOffset,f;a:{try{if(a){var k=a.getBoundingClientRect(),m,h=0===a.offsetWidth&&0===a.offsetHeight;c:{for(var l=a.parentNode,v=k.left||0,p=k.top||0,r=k.width||0,s=k.height||0;l&&l!==document.body;){var n;d:{try{if(l){var q=l.getBoundingClientRect();n={x:q.left||
+0,y:q.top||0,w:q.width||0,h:q.height||0}}else n=void 0;break d}catch(u){}n=void 0}var F=window.getComputedStyle(l),t="hidden"===F.overflow,w=t||"hidden"===F.overflowX,x=t||"hidden"===F.overflowY,y=p+s-1<n.y+1||p+1>n.y+n.h-1;if((v+r-1<n.x+1||v+1>n.x+n.w-1)&&w||y&&x){m=!0;break c}l=l.parentNode}m=!1}f={x:k.left+d||0,y:k.top+g||0,w:k.width||0,h:k.height||0,d:(h||m)|0}}else f=void 0;break a}catch(N){}f=void 0}if(f&&!a.cel_b)a.cel_b=f,A({n:a.getAttribute(z),w:a.cel_b.w,h:a.cel_b.h,d:a.cel_b.d,x:a.cel_b.x,
+y:a.cel_b.y,t:b,k:"ewi",cl:a.className},{clog:1});else{if(d=f)d=a.cel_b,g=f,d=g.d===d.d&&1===g.d?!1:!(c(d.x,g.x)&&c(d.y,g.y)&&c(d.w,g.w)&&c(d.h,g.h)&&d.d===g.d);d&&(a.cel_b=f,A({n:a.getAttribute(z),w:a.cel_b.w,h:a.cel_b.h,d:a.cel_b.d,x:a.cel_b.x,y:a.cel_b.y,t:b,k:"ewi"},{clog:1}))}}function y(b,d){var c;c=b.c?f.getElementsByClassName(b.c):b.id?[f.getElementById(b.id)]:f.querySelectorAll(b.s);b.w=[];for(var g=0;g<c.length;g++){var e=c[g];if(e){if(!e.getAttribute(z)){var k=e.getAttribute("cel_widget_id")||
+(b.id_gen||E)(e,g)||e.id;e.setAttribute(z,k)}b.w.push(e);r(O,e,d)}}!1===x&&(m++,m===s.length&&(x=!0,a.ue_utils.notifyWidgetsLabeled()))}function t(a,b){p.contains(a)||A({n:a.getAttribute(z),t:b,k:"ewd"},{clog:1})}function w(a){I.length&&ue_cel.timeout(function(){if(l){for(var b=Q(),c=!1;Q()-b<g&&!c;){for(c=R;0<c--&&0<I.length;){var d=I.shift();S[d.type](d.elem,d.time)}c=0===I.length}T++;w(a)}},0)}function r(a,b,c){I.push({type:a,elem:b,time:c})}function b(a,b){for(var c=0;c<s.length;c++)for(var d=
+s[c].w||[],e=0;e<d.length;e++)r(a,d[e],b)}function k(){J||(J=a.ue_cel.timeout(function(){J=null;var c=n();b(W,c);for(var d=0;d<s.length;d++)r(X,s[d],c);0===s.length&&!1===x&&(x=!0,a.ue_utils.notifyWidgetsLabeled());w(c)},q))}function d(){J||M||(M=a.ue_cel.timeout(function(){M=null;var a=n();b(O,a);w(a)},q))}function v(){return B&&D&&p&&p.contains&&p.getBoundingClientRect&&n}var q=50,g=4.5,l=!1,n,z="data-cel-widget",s=[],m=0,x=!1,E=function(){},A=a.ue_cel.log,p,C,B,D,G=e.MutationObserver||e.WebKitMutationObserver||
+e.MozMutationObserver,N=!!G,H,F,U="DOMAttrModified",K="DOMNodeInserted",L="DOMNodeRemoved",M,J,I=[],T=0,R=null,W="removedWidget",X="updateWidgets",O="processWidget",S,V=e.performance||{},Q=V.now&&function(){return V.now()}||function(){return Date.now()};"function"==typeof uet&&uet("bb","csmCELLSfem",{wb:1});return{on:function(b){function c(){if(v()){S={removedWidget:t,updateWidgets:y,processWidget:u};if(N){var a={attributes:!0,subtree:!0};H=new G(d);F=new G(k);H.observe(p,a);F.observe(p,{childList:!0,
+subtree:!0});F.observe(C,a)}else B.call(p,U,d),B.call(p,K,k),B.call(p,L,k),B.call(C,K,d),B.call(C,L,d);k()}}p=f.body;C=f.head;B=p.addEventListener;D=p.removeEventListener;n=b.ts;s=a.cel_widgets||[];R=b.bs||5;h.deffered?c():h.attach&&h.attach("load",c);"function"==typeof uex&&uex("ld","csmCELLSfem",{wb:1});l=!0},off:function(){v()&&(F&&(F.disconnect(),F=null),H&&(H.disconnect(),H=null),D.call(p,U,d),D.call(p,K,k),D.call(p,L,k),D.call(C,K,d),D.call(C,L,d));h.count&&h.count("cel.widgets.batchesProcessed",
+T);l=!1},ready:function(){return a.ue_cel&&a.ue_cel.log},reset:function(){s=a.cel_widgets||[]}}}(),a.ue_cel&&a.ue_fem&&a.ue_cel.registerModule("features module",a.ue_fem))}})(ue_csm,window,document);
+(function(a,e,f){!a.ue_mcm&&a.ue_cel&&a.ue_utils&&!a.ue.isBF&&(a.ue_mcm=function(){function h(a,c){var d=a.srcElement||a.target||{},h={k:u,w:(c||{}).ow||(e.body||{}).scrollWidth,h:(c||{}).oh||(e.body||{}).scrollHeight,t:(c||{}).ots||y(),x:a.pageX,y:a.pageY,p:r.getXPath(d),n:d.nodeName};f&&"function"===typeof f.now&&a.timeStamp&&(h.dt=(c||{}).odt||f.now()-a.timeStamp,h.dt=parseFloat(h.dt.toFixed(2)));a.button&&(h.b=a.button);d.href&&(h.r=r.extractStringValue(d.href));d.id&&(h.i=d.id);d.className&&
+d.className.split&&(h.c=d.className.split(/\s+/));w(h,{c:1})}function c(){switch(a.ue_mcimp){case 1:return"click";case 3:return"mousedown"}}var u="mcm",y,t=a.ue,w=a.ue_cel.log,r=a.ue_utils;return{on:function(b){y=b.ts;a.ue_cel_stub&&a.ue_cel_stub.replayModule(u,h);(event=c())?window.addEventListener&&window.addEventListener(event,h,!0):t.attach&&t.attach("click",h,e)},off:function(a){(event=c())?window.removeEventListener&&window.removeEventListener(event,h,!0):t.detach&&t.detach("click",h,e)},ready:function(){return a.ue_cel&&
+a.ue_cel.log},reset:function(){}}}(),a.ue_cel&&a.ue_cel.registerModule("mouse click module",a.ue_mcm))})(ue_csm,document,window.performance);
+(function(a,e){a.ue_mmm||!a.ue_cel||a.ue.isBF||(a.ue_mmm=function(f){function h(a,b){var c={x:a.pageX||a.x||0,y:a.pageY||a.y||0,t:r()};!b&&A&&(c.t-A.t<y||c.x==A.x&&c.y==A.y)||(A=c,m.push(c))}function c(){if(m.length){z=G.now();for(var a=0;a<m.length;a++){var b=m[a],c=a;p=m[E];C=b;var e=void 0;if(!(e=2>c)){e=void 0;a:if(m[c].t-m[c-1].t>u)e=0;else{for(e=E+1;e<c;e++){var f=p,h=C,k=m[e];B=(h.x-f.x)*(f.y-k.y)-(f.x-k.x)*(h.y-f.y);if(B*B/((h.x-f.x)*(h.x-f.x)+(h.y-f.y)*(h.y-f.y))>t){e=0;break a}}e=1}e=!e}(D=
+e)?E=c-1:x.pop();x.push(b)}s=G.now()-z;q=Math.min(q,s);g=Math.max(g,s);l=(l*n+s)/(n+1);n+=1;d({k:w,e:x,min:Math.floor(1E3*q),max:Math.floor(1E3*g),avg:Math.floor(1E3*l)},{c:1});m=[];x=[];E=0}}var u=100,y=20,t=25,w="mmm1",r,b,k=a.ue,d=a.ue_cel.log,v,q=1E3,g=0,l=0,n=0,z,s,m=[],x=[],E=0,A,p,C,B,D,G=f&&f.now&&f||Date.now&&Date||{now:function(){return(new Date).getTime()}};return{on:function(a){r=a.ts;b=a.ns;k.attach&&k.attach("mousemove",h,e);v=setInterval(c,3E3)},off:function(a){b&&(A&&h(A,!0),c());
+clearInterval(v);k.detach&&k.detach("mousemove",h,e)},ready:function(){return a.ue_cel&&a.ue_cel.log},reset:function(){m=[];x=[];E=0;A=null}}}(window.performance),a.ue_cel&&a.ue_cel.registerModule("mouse move module",a.ue_mmm))})(ue_csm,document);
+
+
+
+
+ue_csm.ue_unrt = 750;
+(function(d,b,t){function u(a,b){var c=a.srcElement||a.target||{},e={k:w,t:b.t,dt:b.dt,x:a.pageX,y:a.pageY,p:f.getXPath(c),n:c.nodeName};a.button&&(e.b=a.button);c.type&&(e.ty=c.type);c.href&&(e.r=f.extractStringValue(c.href));c.id&&(e.i=c.id);c.className&&c.className.split&&(e.c=c.className.split(/\s+/));g+=1;f.getFirstAscendingWidget(c,function(a){e.wd=a;d.ue.log(e,r)})}function x(a){if(!y(a.srcElement||a.target)){k+=1;n=!0;var v=h=d.ue.d(),c;p&&"function"===typeof p.now&&a.timeStamp&&(c=p.now()-
+a.timeStamp,c=parseFloat(c.toFixed(2)));s=b.setTimeout(function(){u(a,{t:v,dt:c})},z)}}function A(a){if(a){var b=a.filter(B);a.length!==b.length&&(q=!0,l=d.ue.d(),n&&q&&(l&&h&&d.ue.log({k:C,t:h,m:Math.abs(l-h)},r),m(),q=!1,l=0))}}function B(a){if(!a)return!1;var b="characterData"===a.type?a.target.parentElement:a.target;if(!b||!b.hasAttributes||!b.attributes)return!1;var c={"class":["gw-clock","gw-clock-aria","s-item-container-height-auto","feed-carousel"],id:["dealClock","deal_expiry_timer","timer"],
+role:["timer"]},e=!1;Object.keys(c).forEach(function(a){var d=b.attributes[a]?b.attributes[a].value:"";(c[a]||"").forEach(function(a){-1!==d.indexOf(a)&&(e=!0)})});return e}function y(a){if(!a)return!1;var b=(f.extractStringValue(a.nodeName)||"").toLowerCase(),c=(f.extractStringValue(a.type)||"").toLowerCase(),e=(f.extractStringValue(a.href)||"").toLowerCase();a=(f.extractStringValue(a.id)||"").toLowerCase();var d="checkbox color date datetime-local email file month number password radio range reset search tel text time url week".split(" ");
+if(-1!==["select","textarea","html"].indexOf(b)||"input"===b&&-1!==d.indexOf(c)||"a"===b&&-1!==e.indexOf("http")||-1!==["sitbreaderrightpageturner","sitbreaderleftpageturner","sitbreaderpagecontainer"].indexOf(a))return!0}function m(){n=!1;h=0;b.clearTimeout(s)}function D(){b.ue.onSushiUnload(function(){ue.event({violationType:"unresponsive-clicks",violationCount:g,totalScanned:k},"csm","csm.ArmoredCXGuardrailsViolation.3")});b.ue.onunload(function(){ue.count("armored-cxguardrails.unresponsive-clicks.violations",
+g);ue.count("armored-cxguardrails.unresponsive-clicks.violationRate",g/k*100||0)})}if(b.MutationObserver&&b.addEventListener&&Object.keys&&d&&d.ue_unrt&&d.ue_utils){var z=d.ue_unrt,r="cel",w="unr_mcm",C="res_mcm",p=b.performance,f=d.ue_utils,n=!1,h=0,s=0,q=!1,l=0,g=0,k=0;b.addEventListener&&(b.addEventListener("mousedown",x,!0),b.addEventListener("beforeunload",m,!0),b.addEventListener("visibilitychange",m,!0),b.addEventListener("pagehide",m,!0));b.ue&&b.ue.event&&b.ue.onSushiUnload&&b.ue.onunload&&
+D();(new MutationObserver(A)).observe(t,{childList:!0,attributes:!0,characterData:!0,subtree:!0})}})(ue_csm,window,document);
+
+
+ue_csm.ue.exec(function(g,f){if(f.ue_err){var e="";f.ue_err.addContextInfo=function(a){if(!a.logLevel||"FATAL"===a.logLevel)if(e=g.getElementsByTagName("html")[0].innerHTML){var b=e.indexOf("var ue_t0=ue_t0||+new Date();");if(-1!=b){var b=e.substr(0,b).split("\n"),d=Math.max(b.length-5-1,0),b=b.slice(d,b.length-1);a.fcsmln=b.length+1;a.cinfo=a.cinfo||{};for(var c=0;c<b.length;c++)a.cinfo[d+c+1+""]=b[c]}b=e.split("\n");a.cinfo=a.cinfo||{};if(!(a.f||void 0===a.l||a.l in a.cinfo))for(c=+a.l-1,d=Math.max(c-
+2,0),c=Math.min(c+2,b.length-1);d<=c;d++)a.cinfo[d+1+""]=b[d]}}}},"fatals-context")(document,window);
+
+
+
+
+
+}
+/* ◬ */
+</script>
+
+</div>
+
+<noscript>
+    <img height="1" width="1" style='display:none;visibility:hidden;' src='//fls-na.amazon.com/1/batch/1/OP/ATVPDKIKX0DER:134-5300398-7648904:NX9YH5HXY5PG965D13SJ$uedata=s:%2Falexa%2Fconsole%2Fask%2Ftest%2Fuedata%3Fnoscript%26id%3DNX9YH5HXY5PG965D13SJ:0' alt=""/>
+</noscript>
+
+<!-- csm body end -->
+
+<script type="text/javascript">
+window.webAppJson = {"avsEndpoint":"https://avs-alexa-na.amazon.com/","locales":[{"value":"en-US","label":"English (US)","voice":"en_us_nina"},{"value":"en-GB","label":"English (GB)","voice":"en_gb_abbey"},{"value":"en-IN","label":"English (IN)","voice":"en_in_ira"},{"value":"de-DE","label":"German (DE)","voice":"de_de_silke"},{"value":"ja-JP","label":"Japanese (JP)","voice":"ja_jp_yumiko"},{"value":"en-CA","label":"English (CA)","voice":"en_ca_evelyn"},{"value":"en-AU","label":"English (AU)","voice":"en_au_ella"},{"value":"fr-FR","label":"French (FR)","voice":"fr_fr_chloe"},{"value":"fr-CA","label":"French (CA)","voice":"fr_ca_evelyn"},{"value":"it-IT","label":"Italian (IT)","voice":"it_it_giulia"},{"value":"es-ES","label":"Spanish (ES)","voice":"es_es_alicia"},{"value":"es-MX","label":"Spanish (MX)","voice":"es_mx_fernanda"}],"csrfToken":"cmrE3Bd9UCEKSFR6tKZhGHiWD5gj3D","qaAttributes":false,"selectedLocale":"en_US","localizationContent":"{\"ASK_STTW_DIALOG_UNKNOWN_ERROR_MESSAGE\":\"There was an issue processing your input\",\"ASK_STTW_ERROR_INTERACTION_UNSUPPORTED_LOCALE\":\"Unsupported locale.\",\"ASK_STTW_UI_PANE_DISPLAY\":\"Device Display\",\"ASK_STTW_LOCALE_LABEL_ITALIAN_IT\":\"Italian (IT)\",\"ASK_STTW_LOCALE_LABEL_JAPANESE_JP\":\"Japanese (JP)\",\"ASK_STTW_LOCALE_LABEL_SPANISH_MX\":\"Spanish (MX)\",\"ASK_STTW_LOCALE_LABEL_ENGLISH_IN\":\"English (IN)\",\"ASK_STTW_LOCALE_LABEL_SPANISH_ES\":\"Spanish (ES)\",\"ASK_STTW_LOCALE_LABEL_ENGLISH_US\":\"English (US)\",\"ASK_STTW_DEVICE_SELECTOR_LARGE_TV_LABEL\":\"Extra Large TV\",\"ASK_STTW_ERROR_INTERACTION_TOGGLE_SKILL\":\"Error setting skill enablement\",\"ASK_STTW_ERROR_403\":\"Authentication error: please login again\",\"ASK_STTW_MANUAL_JSON_DOC_LINK\":\"Learn more about manual JSON\",\"ASK_STTW_EDITOR_WARNING_CANCEL_BTN\":\"Cancel\",\"ASK_STTW_DEVICE_SELECTOR_LARGE_HUB_LABEL\":\"Large Hub\",\"ASK_STTW_INVALID_DEVICE_RENDERABLE_MESSAGE\":\"\u003ca href\u003d\\\"/docs/custom-skills/visual-markup-migration.html\\\" target\u003d\\\"_blank\\\"\u003eUpdate to Alexa Presentation Language (APL)\u003c/a\u003e to view the skill display in Test or view existing version on an Alexa-enabled device\",\"ASK_STTW_UI_PANE_SKILL_LEVEL\":\"Skill I/O\",\"ASK_STTW_ERROR_400\":\"There was an issue processing your input\",\"ASK_STTW_MANUAL_JSON_SUBMIT_BTN\":\"Submit\",\"ASK_STTW_TAB_MANUAL_JSON_TITLE\":\"Manual JSON\",\"ASK_STTW_ERROR_TYPE_UNSUPPORTED_BROWSER\":\"This page is currently not functioning correctly in IE 11. Consider using Edge.\",\"ASK_STTW_ERROR\":\"An unknown error has occurred.\",\"ASK_STTW_DEVICE_RENDERER_NO_RENDERABLE_CONTENT\":\"The template is not available or currently not supported\",\"ASK_STTW_LOCALE_LABEL_ENGLISH_AU\":\"English (AU)\",\"ASK_STTW_INACTIVE_REQUEST_RENDERABLE_MESSAGE\":\"Previous rendered templates are not available to view.\",\"ASK_STTW_DEVICE_SELECTOR_SMALL_HUB_LABEL\":\"Small Hub\",\"ASK_STTW_MANUAL_JSON_INFO\":\"Manual JSON will only work for {skillName} and doesn\u0027t maintain sessions. Each operation is a single turn operation or one-off exchange (no \\\"dialog\\\").\",\"ASK_STTW_DIALOG_DEFAULT_MESSAGE\":\"First, open your skill with your invocation name. Then start testing your dialog.\",\"ASK_STTW_SKILL_TOGGLE_TITLE_DISABLED\":\"Test is disabled for this skill.\",\"ASK_STTW_ERROR_TYPE_REQUEST\":\"The input was incompatible.\",\"ASK_STTW_ENABLEMENT_NOTICE_UNSUPPORTED_MESSAGE\":\"To test a SmartHome or Video skill, first enable the skill with the Alexa companion app, complete any required information, and then refresh this page.\",\"ASK_STTW_DEVICE_SPOT_RENDERER_TITLE\":\"Echo Spot Display\",\"ASK_STTW_LOCALE_LABEL_GERMAN_DE\":\"German (DE)\",\"ASK_STTW_UI_PANE_DEVICE_RENDERER\":\"Echo Show Display\",\"ASK_STTW_EDITOR_WARNING_TITLE\":\"By changing device, you will reset your skill session.\",\"ASK_STTW_DIALOG_NO_CONTENT\":\"No Content\",\"ASK_STTW_USER_TOUCH_EVENT\":\"\u003cUser Touch Event\u003e\",\"ASK_STTW_ERROR_INTERACTION_GET_SKILL\":\"Error retrieving skill metadata\",\"ASK_STTW_SKILL_DEBUG_INFO_JSON_INPUT_TITLE\":\"JSON Input\",\"ASK_STTW_SPEECH_SIMULATOR_LISTEN_BTN\":\"Play\",\"ASK_STTW_TAB_SIMULATOR_TITLE\":\"Alexa Simulator\",\"ASK_STTW_DIALOG_AUDIO_ONLY_RESPONSE\":\"\u003cAudio only response\u003e\",\"ASK_STTW_LOCALE_LABEL_ENGLISH_GB\":\"English (GB)\",\"ASK_STTW_SPEECH_SIMULATOR_DOC_LINK\":\"Learn more about supported SSML tags\",\"ASK_STTW_UI_PANE_DEVICE_LEVEL\":\"Device Log\",\"ASK_STTW_ENABLEMENT_NOTICE_UNSUPPORTED_STAGE_MESSAGE\":\"Testing is only available on the development stage.\",\"ASK_STTW_EDITOR_WARNING_PROCEED_BTN\":\"Proceed\",\"ASK_STTW_TAB_SSML_TITLE\":\"Voice \u0026 Tone\",\"ASK_STTW_ERROR_TYPE_AUTH\":\"There was an error with authentication.\",\"ASK_STTW_SPEECH_SIMULATOR_INFO\":\"Test out Alexa\u0027s response output and personality. This text to speech simulator supports SSML using Alexa\u0027s voice.\",\"ASK_STTW_AVS_INPUT_UTTERANCE_INPUT_PLACEHOLDER\":\"Type or click and hold the mic\",\"ASK_STTW_ERROR_INTERACTION_ASF\":\"Error completing Alexa request\",\"ASK_STTW_LOCALE_LABEL_ENGLISH_CA\":\"English (CA)\",\"ASK_STTW_UI_PANE_SPOT_DEVICE_RENDERER\":\"Echo Spot Display\",\"ASK_STTW_DEVICE_SELECTOR_ROUND_LABEL\":\"Round\",\"ASK_STTW_ERROR_TYPE_UNSUPPORTED_LOCALE\":\"{locale} is currently not supported.\",\"ASK_STTW_DEVICE_SELECTOR_LANDSCAPE_LABEL\":\"Landscape\",\"ASK_STTW_SKILL_TOGGLE_TITLE_ENABLED\":\"Test is enabled for this skill\",\"ASK_STTW_LOCALE_LABEL_FRENCH_FR\":\"French (FR)\",\"ASK_STTW_SKILL_DEBUG_INFO_JSON_OUTPUT_TITLE\":\"JSON Output\",\"ASK_STTW_ECHO_BUTTONS_LABEL\":\"Echo Buttons (Beta)\",\"ASK_STTW_ENABLEMENT_NOTICE_DEFAULT_MESSAGE\":\"When test is enabled, you can interact with the development version of your skill in the Alexa simulator and on all devices linked to your Alexa developer account.\",\"ASK_STTW_DEVICE_SELECTOR_MED_HUB_LABEL\":\"Medium Hub\",\"ASK_STTW_EDITOR_WARNING_SUBTITLE\":\"Do you want to proceed?\",\"ASK_STTW_ERROR_INTERACTION_GET_TTS\":\"Error retrieving text to speech\",\"ASK_STTW_ENABLEMENT_NOTICE_INVALID_MODEL\":\"A valid interaction model is required to test your skill.\",\"ASK_STTW_SKILL_DEBUG_INFO_JSON_AVAILABLE_ONLY_FOR_SPEECH_REQUEST\":\"Skill I/O is available only for speech requests to skills you have created.\",\"ASK_STTW_SPEECH_SIMULATOR_STOP_BTN\":\"Stop\",\"ASK_STTW_DEVICE_LEVEL_TITLE\":\"Device Log\",\"ASK_STTW_LOCALE_LABEL_FRENCH_CA\":\"French (CA)\",\"ASK_STTW_MANUAL_JSON_REGION_SELECTOR_LABEL\":\"Select Region Endpoint\",\"ASK_STTW_ERROR_INTERACTION_RENDER_ERROR\":\"Error retrieving device rendering\",\"ASK_STTW_ERROR_TYPE_SERVER\":\"There was an internal server error.\",\"ASK_STTW_ERROR_INTERACTION_UNSUPPORTED_BROWSER\":\"Unsupported browser.\",\"ASK_STTW_DEVICE_RENDERER_TITLE\":\"Echo Show Display\",\"ASK_STTW_ENABLEMENT_NOTICE_INVALID_ENDPOINT\":\"A functional endpoint is required to test your skill.\",\"ASK_STTW_SKILL_DEBUG_INFO_TITLE\":\"Skill I/O\",\"ASK_STTW_ERROR_INTERACTION_MANUAL_JSON\":\"Error submitting Manual JSON\",\"ASK_STTW_ALEXA_SMART_HOME_LABEL\":\"Alexa Smart Home (Beta)\",\"ASK_STTW_ERROR_TYPE_GENERIC\":\"An unknown error has occurred. Please try later.\",\"ASK_STTW_ERROR_TYPE_TIMEOUT\":\"User Session Time out - Sign in again to continue working on your skills.\"}"};
+</script>
+
+      <link rel="stylesheet" type="text/css" href="https://d15wb6kq5zpbnv.cloudfront.net/style.88e3fdfb662f97abb25e66c0cc9416b2.css">
+
+
+
+
+
+
+<style>.adc-header {
+    width: 100%;
+    background-color: #152939;
+    font-family: "Amazon Ember Regular", Roboto, Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    line-height: 30px;
+    overflow: hidden;
+}
+
+.adc-header-content {
+    width: 100%;
+    height: 32px;
+}
+
+.adc-header-overview {
+    float: left;
+    padding-left: 16px;
+    padding-right: 20px;
+}
+
+.adc-header-tab {
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.activeTabClass {
+    border-bottom: 5px solid white;
+}
+
+.overviewClass, .goBackSkills {
+    color: white;
+    font-size: 14px;
+    font-family: "Amazon Ember Regular";
+    line-height: 1.7rem;
+}
+
+a.goBackLink {
+    color: white !important;
+    margin-right: 40px;
+    margin-top: -1px;
+}
+
+.feedback-section-bell {
+    float: right;
+    padding-right: 80px;
+}
+
+.feedback-section-no-bell {
+    float: right;
+    padding-right: 16px;
+}
+
+#bell {
+    position: absolute;
+    right: 60px;
+}
+
+#give-feedback {
+    color: white;
+}
+
+a#give-feedback:focus {
+    outline:0;
+}
+
+#tabs > div > a {
+    color: white;
+    font-size: 14px;
+    font-family: "Amazon Ember Regular";
+    text-decoration: none;
+    padding-bottom: 10px;
+}
+
+/* overriding dex header */
+header.dpHeader {
+    border-bottom: none;
+    position: relative;
+}
+
+header.dpHeader.absoluteTop {
+    position: relative;
+}
+
+header.dpHeader .dphNavigation {
+    display: none;
+}
+
+#dpHeaderPlaceholder {
+    display: none;
+}
+
+header.dpHeader div.dphTopBar {
+    max-width: none;
+    width: 100%;
+}
+
+footer.dpSlimFooter .dpsfTopLine {
+    max-width: none;
+    width: 100%;
+}
+
+/* overriding dex header */
+</style>
+<div id="adc-header" class="adc-header">
+    <div id="adc-header-content" class="adc-header-content">
+        <div id="adc-header-overview" class="adc-header-overview">
+            <span class="goBackSkills">
+                <a href="/alexa/console/ask" class="goBackLink">
+                    <svg width="14px" height="12px" viewBox="0 -1 10 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Group-8" transform="translate(-21.000000, -98.000000)" fill="#FFFFFF">
+                                <polygon id="chevron-/-down-/-normal" transform="translate(24.500000, 103.748118) rotate(90.000000) translate(-24.500000, -103.748118) " points="18.7518816 101.498955 23.2505059 105.996108 24.4998744 107.248118 25.7537929 105.997429 30.2481184 101.499874 28.997429 100.249185 24.501342 104.745272 20.0027177 100.248118"></polygon>
+                            </g>
+                        </g>
+                    </svg>
+                    Your Skills
+                </a>
+            </span>
+            <span id="skillName" class="overviewClass">Hello World</span>
+        </div>
+        <span id="tabs">
+            <div class="adc-header-tab">
+                <a id="build" class="buildClass" href="/alexa/console/ask/build/amzn1.ask.skill.14b0df53-f2d0-4031-b53d-f2a6bf9e23b1/development/en_US">
+                    Build
+                </a>
+            </div>
+
+
+            <div class="adc-header-tab">
+                <a id="test" class="testClass activeTabClass" href="/alexa/console/ask/test/amzn1.ask.skill.14b0df53-f2d0-4031-b53d-f2a6bf9e23b1/development/en_US">
+                    Test
+                </a>
+            </div>
+            <div class="adc-header-tab">
+                <a id="launch" class="launchClass" href="/alexa/console/ask/publish/alexapublishing/amzn1.ask.skill.14b0df53-f2d0-4031-b53d-f2a6bf9e23b1/development/en_US/skill-info">
+                    Distribution
+                </a>
+            </div>
+            <div class="adc-header-tab">
+                <a id="certify" class="certifyClass" href="/alexa/console/ask/certify/amzn1.ask.skill.14b0df53-f2d0-4031-b53d-f2a6bf9e23b1/development/en_US/validation">
+                    Certification
+                </a>
+            </div>
+            <div class="adc-header-tab">
+                <a id="measure" class="measureClass" href="/alexa/console/ask/measure/amzn1.ask.skill.14b0df53-f2d0-4031-b53d-f2a6bf9e23b1/development/en_US">
+                    Analytics
+                </a>
+            </div>
+        </span>
+        <div id="feedback" class="feedback-section-no-bell">
+            <a href="#" id="give-feedback">
+                Feedback forum
+            </a>
+        </div>
+
+    </div>
+    <script>
+
+        UserVoice = window.UserVoice || [];
+        (function() {
+            var uv = document.createElement('script');
+            uv.type = 'text/javascript';
+            uv.async = true;
+            uv.src = '//widget.uservoice.com/BKxDZqeiLRvyj2Ot9kgeA.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(uv, s)
+        })();
+
+        // Set colors
+        UserVoice.push(['set', {
+            accent_color: '#448dd6',
+            trigger_color: 'white',
+            trigger_background_color: 'rgba(46, 49, 51, 0.6)'
+        }]);
+
+        UserVoice.push(['addTrigger', "#give-feedback", {
+            mode: 'post_idea',
+            trigger_position: 'bottom-right'
+        }]);
+
+        // Autoprompt for NPSÂ® Rating and SmartVote (only displayed under certain conditions)
+        UserVoice.push(['autoprompt', {}]);
+
+
+
+        document.addEventListener('updateSkillName', function(event) {
+            if (event.skillName) {
+                document.getElementById("skillName").textContent = event.skillName;
+            }
+        });
+
+
+        var urlTemplates = {
+           buildUrl: '/alexa/console/ask/build/:skillId/:stage/:locale',
+           testUrl: '/alexa/console/ask/test/:skillId/:stage/:locale',
+           launchUrl: '/alexa/console/ask/publish/alexapublishing/:skillId/:stage/:locale/skill-info',
+           measureUrl: '/alexa/console/ask/measure/:skillId/:stage/:locale'
+        };
+
+
+        document.addEventListener('updateTenantUrls', function(event) {
+            if (event.stage && event.locale && event.skillId) {
+
+
+                var adcNotificationsEvent = new Event('updateNotificationPaths');
+                adcNotificationsEvent.skillId = event.skillId;
+                adcNotificationsEvent.stage = event.stage;
+                adcNotificationsEvent.locale = event.locale;
+                document.dispatchEvent(adcNotificationsEvent);
+
+                var buildUrl = urlTemplates.buildUrl.replace(':stage', event.stage)
+                            .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                var testUrl = urlTemplates.testUrl.replace(':stage', event.stage)
+                            .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                var launchUrl = urlTemplates.launchUrl.replace(':stage', event.stage)
+                            .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                var measureUrl = urlTemplates.measureUrl.replace(':stage', event.stage)
+                            .replace(':locale', event.locale).replace(':skillId', event.skillId);
+
+
+                document.getElementById("build").href = buildUrl;
+                document.getElementById("test").href = testUrl;
+                document.getElementById("launch").href = launchUrl;
+                document.getElementById("measure").href = measureUrl;
+
+
+                if(document.getElementById("certify")) {
+                    urlTemplates.certifyUrl = "/alexa/console/ask/certify/:skillId/:stage/:locale/validation";
+                    var certifyUrl =  urlTemplates.certifyUrl.replace(':stage', event.stage)
+                                .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                    document.getElementById("certify").href = certifyUrl;
+                }
+
+                if(document.getElementById("code-editor")) {
+                    urlTemplates.codeEditorUrl = "";
+                    var codeEditorUrl =  urlTemplates.codeEditorUrl.replace(':stage', event.stage)
+                                .replace(':locale', event.locale).replace(':skillId', event.skillId);
+                    document.getElementById("code-editor").href = codeEditorUrl;
+                }
+
+
+                document.getElementById("tabs").removeAttribute("hidden");
+                document.getElementById("adc-header-overview").removeAttribute("hidden");
+
+                var bellItem = document.getElementById("bell");
+                if (bellItem) {
+                    bellItem.removeAttribute("hidden");
+                    document.getElementById("feedback").className = 'feedback-section-bell';
+                }
+            }
+        });
+
+
+        document.addEventListener('hideTenantUrls', function(event) {
+            document.getElementById("tabs").setAttribute("hidden", true);
+            document.getElementById("adc-header-overview").setAttribute("hidden", true);
+
+            var bellItem = document.getElementById("bell");
+            if (bellItem) {
+                bellItem.setAttribute("hidden", true);
+                document.getElementById("feedback").className = 'feedback-section-no-bell';
+            }
+        });
+
+
+        document.addEventListener('setTabActive', function(event) {
+            document.getElementById(event.tab).classList.add('activeTabClass');
+        });
+
+    </script>
+
+
+<style>.adc-notifications-toaster-container {
+    position: fixed;
+    bottom: 20px;
+    right: 5px;
+    z-index: 9999999;
+}
+
+.adc-notifications-toast {
+    transition: all 2s ease-in;
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.adc-notifications-toast--info {
+    background-color: #f2fcff;
+}
+
+.adc-notifications-toast--success {
+    background-color: #ecf9f0;
+}
+
+.adc-notifications-toast--error {
+    background-color: #fcf8f7;
+}
+
+.adc-notifications-toast-icon-container {
+    margin: 1.5rem;
+}
+
+.adc-notifications-toast-dismiss-container {
+    margin: 1.5rem 1.5rem 0 0;
+    float: right;
+}
+
+.adc-notifications-toast-icon {
+    display: inline-flex;
+    flex: 0 0 3rem;
+    justify-content: center;
+    align-items: center;
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+
+    svg {
+        fill: white;
+        vertical-align: middle;
+    }
+}
+
+.adc-notifications-toast-icon--info {
+  background-color: #00B0E6;
+}
+
+.adc-notifications-toast-icon--success {
+  background-color: #008577;
+}
+
+.adc-notifications-toast-icon--error {
+  background-color: #cc1a3d;
+}
+
+.adc-notifications-clickable-link {
+    cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.adc-notifications-toast-text-container {
+    width: 35rem;
+}
+.adc-notifications-toast-text {
+    padding: 1rem;
+    font-size: 13px;
+    font-family: 'Amazon Ember Regular', 'Helvetica Neue', Arial, Helvetica, Roboto, sans-serif;
+    text-decoration: none;
+    justify-content: center;
+    vertical-align: middle;
+    color: #373e3e;
+}
+
+p.adc-p {
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
+    overflow: hidden;
+    position: relative;
+    line-height: 1.4em;
+    max-height: 160px;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+    text-align: left;
+}
+
+h5.adc-h5 {
+    margin-bottom: 0.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.adc-notifications-timestamp {
+    float: right;
+    font-style: italic;
+}
+</style>
+<div id="toaster-container" class="adc-notifications-toaster-container"></div>
+<script>
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    const portalSupportedLocale = ['en_US', 'ja_JP'].includes('en_US');
+    let failureCount = 0;
+    const maxFailureCount = 3;
+    const maxNotificationCount = 3;
+    const defaultDismissalTimeout = 7000;
+    const endpoint = '/alexa/console/ask/adc/notifications/ajax/notifications';
+    let toBeDisplayedToasts = [];
+    let backlogToasts = [];
+
+    fetchToasts();
+    let intervalId = setInterval(fetchToasts, 10000);
+
+    function fetchToasts() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', endpoint);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Accept', 'application/json, text/plain, */*');
+        xhr.setRequestHeader('credentials', 'same-origin');
+
+        xhr.timeout = 2000;
+        xhr.send();
+        xhr.onloadend = () => {
+            if (xhr.status === 200) {
+                handleNotificationsResponse(xhr.responseText);
+            } else {
+                failureCount === maxFailureCount ? clearInterval(intervalId) : failureCount = failureCount + 1;
+            }
+        };
+        xhr.onerror = () => {
+            // do nothing
+        };
+        xhr.ontimeout = () => {
+            // do nothing
+        };
+    }
+
+    function handleNotificationsResponse(notificationResponse) {
+        let fetchedNotifications;
+
+        try {
+            fetchedNotifications = JSON.parse(notificationResponse);
+        } catch(e) {
+            fetchedNotifications = [];
+        }
+
+        const notificationsValidation =
+            fetchedNotifications &&
+            fetchedNotifications.every((n) =>
+            n.hasOwnProperty('id') && n.hasOwnProperty('toastRead')
+            && n.hasOwnProperty('vendorId')
+            && n.hasOwnProperty('skillId')
+            && n.hasOwnProperty('tenant')
+            && n.hasOwnProperty('toastMessage')
+            && n.hasOwnProperty('toastSeverity'));
+
+        if (notificationsValidation) {
+            fetchedNotifications = fetchedNotifications.filter(n => n.id !== null)
+                .filter(n => n.vendorId !== null)
+                .filter(n => n.skillId !== null)
+                .filter(n => n.toastMessage !== null)
+                .filter(n => n.tenant !== null)
+                .filter(n => ['INFO', 'SUCCESS', 'ERROR'].includes(n.toastSeverity));
+            const unreadToasts = fetchedNotifications.filter(n => !n['toastRead']);
+
+            fireBellAndAlertsEvents(fetchedNotifications);
+
+            // filter the already displayed toasts and remove any toast that already has read flag true
+            const unreadToastIds = unreadToasts.map(n => n.id);
+
+            toBeDisplayedToasts = toBeDisplayedToasts.filter(n => {
+              const condition = unreadToastIds.includes(n.id) || n.synchronousToast;
+              if (!condition && document.getElementById(n.id) && !n.synchronousToast) {
+                document.getElementById(n.id).remove();
+              }
+              return condition;
+            });
+            backlogToasts = backlogToasts.filter(n => (unreadToastIds.includes(n.id) || n.synchronousToast));
+            const displayedIds = toBeDisplayedToasts.map(x => x.id);
+            const backlogIds = backlogToasts.map(x => x.id);
+            const filteredToasts = unreadToasts.filter(n => !displayedIds.includes(n.id) && !backlogIds.includes(n.id));
+
+            const newCount = maxNotificationCount - toBeDisplayedToasts.length;
+            toBeDisplayedToasts = toBeDisplayedToasts.concat(filteredToasts.slice(0, newCount));
+            backlogToasts = backlogToasts.concat(filteredToasts.filter(n => !toBeDisplayedToasts.includes(n)));
+
+            displayToasts();
+        }
+    }
+
+    function fireBellAndAlertsEvents(fetchedNotifications) {
+        const notificationEvent = new Event('updateSkillNotifications');
+        notificationEvent.notifications = fetchedNotifications;
+        document.dispatchEvent(notificationEvent);
+
+        const buildErrorsEvent = new Event('updateAdcBuildErrorsCounter');
+        const buildList = fetchedNotifications.filter(n => n.tenant === 'SKILL_BUILDER');
+        buildErrorsEvent.notifications = buildList;
+        document.dispatchEvent(buildErrorsEvent);
+
+        const otherNotificationsEvent = new Event('updateAdcOtherNotificationsCounter');
+        const otherList = fetchedNotifications.filter(n => n.tenant !== 'SKILL_BUILDER');
+        otherNotificationsEvent.notifications = otherList;
+        document.dispatchEvent(otherNotificationsEvent);
+    }
+
+    function displayToasts() {
+        toBeDisplayedToasts = toBeDisplayedToasts.map(toast => {
+            if (!toast.displayed) {
+                renderToast(toast);
+                toast['displayed'] = true;
+            }
+            return toast;
+        });
+    }
+
+    function renderToast(toast) {
+        const root = document.getElementById('toaster-container');
+        const severity = toast.toastSeverity.toLowerCase();
+        const svg = severity === 'success' ?
+          '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: white;" viewBox="0 0 24 24"><polygon points="4.768 9 12 2.015 10 0 4.768 5.046 2.021 2.268 0 4.262" transform="translate(6 7)"/></svg>'
+          : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: white;" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10.5,4 L13.5,4 L13.5,13.2857143 L10.5,13.2857143 L10.5,4 Z M12,19 C11.1715729,19 10.5,18.3071074 10.5,17.452381 C10.5,16.5976546 11.1715729,15.9047619 12,15.9047619 C12.8284271,15.9047619 13.5,16.5976546 13.5,17.452381 C13.5,18.3071074 12.8284271,19 12,19 Z"/></svg>';
+        const dismissSvg = '<a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M7.77817459,6.36396103 L1.41421356,0 L0,1.41421356 L6.36396103,7.77817459 L5.68434189e-14,14.1421356 L1.41421356,15.5563492 L7.77817459,9.19238816 L14.1421356,15.5563492 L15.5563492,14.1421356 L9.19238816,7.77817459 L15.5563492,1.41421356 L14.1421356,0 L7.77817459,6.36396103 Z" transform="translate(4 4)"/></svg></a>';
+
+        const newDiv = constructElement('div', 'adc-notifications-toast adc-notifications-toast--'.concat(severity));
+        newDiv.id = toast.id;
+        const iconDiv = constructElement('div', 'adc-notifications-toast-icon-container');
+        const icon = constructElement('i', 'adc-notifications-toast-icon adc-notifications-toast-icon--'.concat(severity), svg);
+
+        const dismissDiv = constructElement('div', 'adc-notifications-toast-dismiss-container');
+        const dismissIcon = constructElement('i', 'adc-notifications-clickable-link', dismissSvg);
+        dismissIcon.onclick = function () { dismissNotification(toast); };
+
+        const textContainer = constructElement('div', 'adc-notifications-toast-text-container');
+        const textBody = constructElement('div', 'adc-notifications-toast-text');
+
+        // temporarily for build
+        let header;
+        let body;
+        if (toast.toastSeverity === 'SUCCESS' && toast.toastHeader.includes('[lmsKey]') && portalSupportedLocale) {
+            header = 'Build Successful';
+            body = 'If you make any new changes, you will need to rebuild your model for them to take effect.';
+        } else if (toast.toastSeverity === 'ERROR' && toast.toastHeader.includes('[lmsKey]') && portalSupportedLocale) {
+            header = 'Build Failed';
+            body = 'The model build has failed with an unspecified error. This could be from an invalid model or we could be experiencing intermittent issues. Please try again.';
+        } else if (toast.toastSeverity === 'SUCCESS' && toast.toastHeader.includes('[lmsKey]') && !portalSupportedLocale) {
+           header = 'Build Successful';
+           body = 'If you make any new changes, you will need to rebuild your model for them to take effect.';
+       } else if (toast.toastSeverity === 'ERROR' && toast.toastHeader.includes('[lmsKey]') && !portalSupportedLocale) {
+           header = 'Build Failed';
+           body = 'The model build has failed with an unspecified error. This could be from an invalid model or we could be experiencing intermittent issues. Please try again.';
+       } else {
+            header = toast.toastHeader;
+            body = toast.toastMessage;
+        }
+
+        const title = constructElement('h5', 'adc-h5', header);
+
+        let timestampCode = 'en-US';
+        if ('en_US') {
+            timestampCode = 'en_US'.replace('_', '-');
+        }
+
+        const timestamp = new Date(toast.timestamp).toLocaleDateString(timestampCode, dateOptions);
+        const timestampComponent = constructElement('em', '', timestamp);
+        const timestampContainer = constructElement('div', 'adc-notifications-timestamp');
+        timestampContainer.appendChild(timestampComponent);
+
+        const p = constructElement('p', 'adc-p', body);
+
+        textBody.appendChild(title);
+        textBody.appendChild(p);
+
+        if (toast.toastLinkTitle && toast.toastLink && toast.toastLink !== window.location.pathname) {
+            // temporarily for build
+            let link;
+            if (toast.toastLinkTitle.includes('[lmsKey]') && portalSupportedLocale) {
+                link = 'Go to build';
+            } else if (toast.toastLinkTitle.includes('[lmsKey]') && !portalSupportedLocale) {
+               link = 'Go to build';
+           } else {
+                link = toast.toastLinkTitle;
+            }
+
+            const action = constructElement('a', 'adc-notifications-clickable-link', link);
+            action.href = toast.toastLink;
+            if (toast.toastLink.startsWith("http")) {
+                action.target = "_blank";
+            }
+            action.onclick = function () {
+                const tempDisplayToasts = toBeDisplayedToasts;
+                toBeDisplayedToasts = [];
+                tempDisplayToasts.forEach((toast) => dismissNotification(toast));
+            };
+
+            const actionContainer = constructElement('div', 'adc-notifications-link');
+            actionContainer.appendChild(action);
+            textBody.appendChild(actionContainer);
+        }
+
+        textBody.appendChild(timestampContainer);
+
+        iconDiv.appendChild(icon);
+        dismissDiv.appendChild(dismissIcon);
+
+        newDiv.appendChild(iconDiv);
+        textContainer.appendChild(textBody);
+        newDiv.appendChild(textContainer);
+        newDiv.appendChild(dismissDiv);
+
+        root.insertBefore(newDiv, root.firstChild);
+
+        const dismissalTimeout = toast.toastDismissalTimeout ? toast.toastDismissalTimeout : defaultDismissalTimeout;
+
+        setTimeout(function(){ dismissNotification(toast); }, dismissalTimeout);
+    }
+
+    function constructElement(name, className, innerHTML) {
+      const element = document.createElement(name);
+      element.className = className;
+      if (innerHTML) {
+        element.innerHTML = innerHTML;
+      }
+
+      return element;
+    }
+
+    function dismissNotification(toast) {
+        const xhr = new XMLHttpRequest();
+
+        if (!toast.synchronousToast) {
+            xhr.open('POST', endpoint.concat('/update'));
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json, text/plain, */*');
+            xhr.setRequestHeader('credentials', 'same-origin');
+            toast['displayed'] = undefined;
+            toast['toastRead'] = true;
+            xhr.send(JSON.stringify(toast));
+        }
+
+        const elementToRemove = document.getElementById(toast.id);
+        if (elementToRemove) {
+            elementToRemove.remove();
+        }
+
+        const index = toBeDisplayedToasts.indexOf(toast);
+        if (index > -1) {
+            toBeDisplayedToasts.splice(index, 1);
+
+            if (backlogToasts && backlogToasts.length) {
+                toBeDisplayedToasts.push(backlogToasts.shift());
+                displayToasts();
+            }
+        }
+    }
+
+    document.addEventListener('clearNotificationsPolling', function() {
+        clearInterval(intervalId);
+    });
+
+    document.addEventListener('restartNotificationsPolling', function() {
+        intervalId = setInterval(fetchToasts, 10000);
+    });
+
+    document.addEventListener('postSynchronousNotification', function(event) {
+        const notification = event.notification;
+        if (notification && notification.toastHeader && notification.toastMessage
+            && ['INFO', 'SUCCESS', 'ERROR'].includes(notification.toastSeverity)) {
+            const newCount = maxNotificationCount - toBeDisplayedToasts.length;
+            notification.synchronousToast = true;
+            notification.id = Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+            notification.timestamp = Date.now();
+
+            if (notification.toastDismissalTimeout == 0) {
+                notification.toastDismissalTimeout = 2147483647;
+            } else if (!notification.toastDismissalTimeout) {
+                notification.toastDismissalTimeout = defaultDismissalTimeout;
+            }
+
+            if (newCount > 0) {
+                toBeDisplayedToasts = toBeDisplayedToasts.concat(notification);
+            } else {
+                backlogToasts = backlogToasts.concat(notification);
+            }
+
+            displayToasts();
+        }
+    });
+
+</script>
+
+</div>
+
+
+
+<div id="root"><div data-reactroot=""><div class="askt"><div class="notifications-wrapper"></div><div id="asfContainer"><audio src="https://kopytko.amazon.com/3/6a51633b-d479-11e8-9196-f143414f828c-a695b8/7/1540134257462/ac40d1ff577c1cd055ffc152ceadf9ca270a7602a80aa4321207343d488c72df/resource.mp3" id="asf-player-Dialog"></audio><audio id="asf-player-Alerts"></audio><span class="mejs__offscreen">Audio Player</span><div style="width: 400px; height: 40px;" aria-label="Audio Player" role="application" tabindex="0" class="mejs__container mejs__container-keyboard-inactive mejs__audio" id="mep_0"><div class="mejs__inner"><div class="mejs__mediaelement"><mediaelementwrapper id="asf-player-Content"><audio preload="none" id="asf-player-Content_from_mejs"></audio></mediaelementwrapper></div><div class="mejs__layers"><div style="display: none; width: 400px; height: 40px;" class="mejs__poster mejs__layer"></div></div><div class="mejs__controls"><div class="mejs__button mejs__playpause-button mejs__play"><button type="button" aria-controls="mep_0" title="Play" aria-label="Play" tabindex="0"></button></div><div aria-live="off" role="timer" class="mejs__time mejs__currenttime-container"><span class="mejs__currenttime">00:00</span></div><div class="mejs__time-rail"><span class="mejs__time-total mejs__time-slider"><span style="display: none;" class="mejs__time-buffering"></span><span class="mejs__time-loaded"></span><span class="mejs__time-current"></span><span class="mejs__time-hovered no-hover"></span><span class="mejs__time-handle"><span class="mejs__time-handle-content"></span></span><span class="mejs__time-float"><span class="mejs__time-float-current">00:00</span><span class="mejs__time-float-corner"></span></span></span></div><div class="mejs__time mejs__duration-container"><span class="mejs__duration">00:00</span></div><div class="mejs__button mejs__volume-button mejs__mute"><button type="button" aria-controls="mep_0" title="Mute" aria-label="Mute" tabindex="0"></button></div><a role="slider" aria-valuemax="100" aria-valuemin="0" aria-label="Volume Slider" href="javascript:void(0);" class="mejs__horizontal-volume-slider"><span class="mejs__offscreen">Use Up/Down Arrow keys to increase or decrease volume.</span><div class="mejs__horizontal-volume-total"><div class="mejs__horizontal-volume-current"></div><div class="mejs__horizontal-volume-handle"></div></div></a></div><div class="mejs__clear"></div></div></div></div><section class="askt__section askt__section--header"><div class="askt__toggle askt__toggle--skills"><label class="is-checked astro-toggle" data-qa-hook="skill-testing-enable-toggle" for="astro-toggle-1"><input value="on" aria-describedby="astro-toggle-1-description" aria-checked="true" aria-disabled="false" aria-labelledby="astro-toggle-1-label" class="astro-toggle-input" id="astro-toggle-1" type="checkbox"><i class="astro-toggle-icon"></i><div class="astro-toggle-label"><div class="astro-toggle-title" id="astro-toggle-1-label">Test is enabled for this skill</div></div></label></div><div class="askt__toggle askt__toggle--panels"><fieldset class="inline astro-form-group astro-checkbox-form-group" name="paneSelect"><div class="astro-form-group-fields"><label class="is-checked astro-checkbox" data-qa-hook="skill-testing-skill-level-toggle" value="skillLevel" for="skillLevel"><input aria-describedby="skillLevel-description" aria-checked="true" aria-disabled="false" aria-required="false" aria-labelledby="skillLevel-label" class="astro-checkbox-input" value="skillLevel" id="skillLevel" name="paneSelect" type="checkbox"><i class="astro-checkbox-icon"></i><div class="astro-checkbox-label"><div class="astro-checkbox-title" id="skillLevel-label">Skill I/O</div></div></label><label class="is-checked astro-checkbox" data-qa-hook="skill-testing-device-renderer-toggle" value="deviceRenderer" for="deviceRenderer"><input aria-describedby="deviceRenderer-description" aria-checked="true" aria-disabled="false" aria-required="false" aria-labelledby="deviceRenderer-label" class="astro-checkbox-input" value="deviceRenderer" id="deviceRenderer" name="paneSelect" type="checkbox"><i class="astro-checkbox-icon"></i><div class="astro-checkbox-label"><div class="astro-checkbox-title" id="deviceRenderer-label">Echo Show Display</div></div></label><label class="is-checked astro-checkbox" data-qa-hook="skill-testing-device-renderer-spot-toggle" value="deviceRendererSpot" for="deviceRendererSpot"><input aria-describedby="deviceRendererSpot-description" aria-checked="true" aria-disabled="false" aria-required="false" aria-labelledby="deviceRendererSpot-label" class="astro-checkbox-input" value="deviceRendererSpot" id="deviceRendererSpot" name="paneSelect" type="checkbox"><i class="astro-checkbox-icon"></i><div class="astro-checkbox-label"><div class="astro-checkbox-title" id="deviceRendererSpot-label">Echo Spot Display</div></div></label><label class="astro-checkbox" data-qa-hook="skill-testing-device-level-toggle" value="deviceLevel" for="deviceLevel"><input aria-describedby="deviceLevel-description" aria-checked="false" aria-disabled="false" aria-required="false" aria-labelledby="deviceLevel-label" class="astro-checkbox-input" value="deviceLevel" id="deviceLevel" name="paneSelect" type="checkbox"><i class="astro-checkbox-icon"></i><div class="astro-checkbox-label"><div class="astro-checkbox-title" id="deviceLevel-label">Device Log</div></div></label></div></fieldset></div><!-- react-empty: 112 --></section><section class="askt__section"><!-- react-empty: 135 --><div class="askt-input"><div class="astro-column astro-column--full"><div class="astro-tabs astro-column astro-column--full"><fieldset class="inline astro-form-group astro-radio-form-group" role="tablist"><div class="astro-form-group-fields"><label class="is-checked astro-tab" value="on" aria-controls="astro-tabs-1-panel-0" role="tab" for="astro-radio-1"><input aria-describedby="astro-radio-1-description" aria-checked="true" aria-disabled="false" aria-required="false" aria-labelledby="astro-radio-1-label" class="astro-sr-only" value="on" id="astro-radio-1" name="astro-tabs-1" type="radio"><i class="astro-tab-icon"></i><div class="astro-tab-label"><div class="astro-tab-title" id="astro-radio-1-label">Alexa Simulator</div></div></label><label class="astro-tab" value="on" aria-controls="astro-tabs-1-panel-1" role="tab" for="astro-radio-2"><input aria-describedby="astro-radio-2-description" aria-checked="false" aria-disabled="false" aria-required="false" aria-labelledby="astro-radio-2-label" class="astro-sr-only" value="on" id="astro-radio-2" name="astro-tabs-1" type="radio"><i class="astro-tab-icon"></i><div class="astro-tab-label"><div class="astro-tab-title" id="astro-radio-2-label">Manual JSON</div></div></label><label class="astro-tab" value="on" aria-controls="astro-tabs-1-panel-2" role="tab" for="astro-radio-3"><input aria-describedby="astro-radio-3-description" aria-checked="false" aria-disabled="false" aria-required="false" aria-labelledby="astro-radio-3-label" class="astro-sr-only" value="on" id="astro-radio-3" name="astro-tabs-1" type="radio"><i class="astro-tab-icon"></i><div class="astro-tab-label"><div class="astro-tab-title" id="astro-radio-3-label">Voice &amp; Tone</div></div></label></div></fieldset><div class="astro-tabs-content"><div role="tabpanel" id="astro-tabs-1-panel-0" class="askt-simulator astro-column astro-column--full" title="Alexa Simulator"><div class="askt-simulator__input"><div class="askt-alexa-lang"><div class="Select astro__select Select--single has-value"><div class="Select-control"><span id="react-select-2--value" class="Select-multi-value-wrapper"><div class="Select-value"><span id="react-select-2--value-item" aria-selected="true" role="option" class="Select-value-label">English (US)</span></div><div style="border: 0px none; width: 1px; display: inline-block;" aria-readonly="false" tabindex="0" class="Select-input" aria-activedescendant="react-select-2--value" aria-owns="react-select-2--value" aria-expanded="false" role="combobox"></div></span><span class="Select-arrow-zone"><span class="Select-arrow"></span></span></div></div></div><div class="askt-utterance"><input data-qa-hook="skill-testing-utterance-input" placeholder="Type or click and hold the mic" value="testing" class="askt-utterance__input" type="text"><div><i class="astro-icon icon-x askt-utterance__record--cant"><svg viewBox="0 0 24 24" width="24" height="24"><path transform="translate(4 4)" d="M7.77817459,6.36396103 L1.41421356,0 L0,1.41421356 L6.36396103,7.77817459 L5.68434189e-14,14.1421356 L1.41421356,15.5563492 L7.77817459,9.19238816 L14.1421356,15.5563492 L15.5563492,14.1421356 L9.19238816,7.77817459 L15.5563492,1.41421356 L14.1421356,0 L7.77817459,6.36396103 Z"></path></svg></i><i class="astro-icon icon-mic askt-utterance__record"><svg viewBox="0 0 24 24" width="24" height="24"><path transform="translate(6 2)" d="M5.97692308,13.7307692 C4.29230769,13.7307692 2.90769231,12.3461538 2.90769231,10.6615385 L2.90769231,3.06923077 C2.90769231,1.38461538 4.29230769,0 5.97692308,0 C7.66153846,0 9.04615385,1.38461538 9.04615385,3.06923077 L9.04615385,10.6615385 C9.04615385,12.3461538 7.66153846,13.7307692 5.97692308,13.7307692 Z M10.5,8.63076923 L11.9538462,8.63076923 L11.9538462,10.6153846 C11.9538462,13.6615385 9.66923077,16.2 6.71538462,16.5461538 L6.71538462,20.1230769 L5.26153846,20.1230769 L5.26153846,16.5461538 C2.30769231,16.1769231 0,13.6615385 0,10.6153846 L0,8.63076923 L1.45384615,8.63076923 L1.45384615,10.6153846 C1.45384615,13.1076923 3.48461538,15.1384615 5.97692308,15.1384615 C8.46923077,15.1384615 10.5,13.1076923 10.5,10.6153846 L10.5,8.63076923 Z"></path></svg></i></div></div></div><div class="askt-dialog"><div data-qa-hook="skill-testing-dialog-request" class="askt-dialog__bubble askt-dialog__bubble--request"><p class="askt-dialog__message askt-dialog__message--request">alexa what time is it</p></div><div data-qa-hook="skill-testing-dialog-response" class="askt-dialog__bubble askt-dialog__bubble--response"><i class="astro-icon icon-logo askt-dialog__icon askt-dialog__icon--alexa"><svg viewBox="0 0 24 24" width="24" height="24"><path transform="translate(2 2)" d="M0,10.0000489 C0,15.0707816 3.77428289,19.2594477 8.66667972,19.9113334 L8.66667972,17.8962718 C8.66667972,17.3281595 8.30829606,16.8174945 7.76974193,16.636736 C4.94690794,15.688512 2.927648,12.9904434 3.00202582,9.8313279 C3.09245359,5.9853886 6.22532565,2.96152397 10.0722248,3.00037678 C13.9049334,3.03913173 16.9999315,6.15812215 16.9999315,10.0000489 C16.9999315,10.087639 16.9977785,10.1747398 16.9945489,10.2614491 C16.9887748,10.4004189 16.9838815,10.4807669 16.9775203,10.5606256 C16.975563,10.5860707 16.9731163,10.611418 16.9707676,10.6367653 C16.9658743,10.692549 16.9601002,10.7479411 16.9538368,10.8032355 C16.9466926,10.8660654 16.9385698,10.928504 16.9298598,10.9906489 C16.9258473,11.01903 16.9220305,11.0475091 16.9177244,11.0756945 C16.0607158,16.7212922 8.70778325,19.8942068 8.66756051,19.9115291 C9.10355154,19.9694658 9.54815475,20 9.99990213,20 C15.5228467,20 20,15.5229227 20,10.0000489 C20,4.47717519 15.5228467,0 9.99990213,0 C4.47715329,0 0,4.47717519 0,10.0000489 Z"></path></svg></i><p class="askt-dialog__message askt-dialog__message--response">The time is 11:02 AM.</p></div><div data-qa-hook="skill-testing-dialog-request" class="askt-dialog__bubble askt-dialog__bubble--request"><p class="askt-dialog__message askt-dialog__message--request">what time is it</p></div><div data-qa-hook="skill-testing-dialog-response" class="askt-dialog__bubble askt-dialog__bubble--response"><i class="astro-icon icon-logo askt-dialog__icon askt-dialog__icon--alexa"><svg viewBox="0 0 24 24" width="24" height="24"><path transform="translate(2 2)" d="M0,10.0000489 C0,15.0707816 3.77428289,19.2594477 8.66667972,19.9113334 L8.66667972,17.8962718 C8.66667972,17.3281595 8.30829606,16.8174945 7.76974193,16.636736 C4.94690794,15.688512 2.927648,12.9904434 3.00202582,9.8313279 C3.09245359,5.9853886 6.22532565,2.96152397 10.0722248,3.00037678 C13.9049334,3.03913173 16.9999315,6.15812215 16.9999315,10.0000489 C16.9999315,10.087639 16.9977785,10.1747398 16.9945489,10.2614491 C16.9887748,10.4004189 16.9838815,10.4807669 16.9775203,10.5606256 C16.975563,10.5860707 16.9731163,10.611418 16.9707676,10.6367653 C16.9658743,10.692549 16.9601002,10.7479411 16.9538368,10.8032355 C16.9466926,10.8660654 16.9385698,10.928504 16.9298598,10.9906489 C16.9258473,11.01903 16.9220305,11.0475091 16.9177244,11.0756945 C16.0607158,16.7212922 8.70778325,19.8942068 8.66756051,19.9115291 C9.10355154,19.9694658 9.54815475,20 9.99990213,20 C15.5228467,20 20,15.5229227 20,10.0000489 C20,4.47717519 15.5228467,0 9.99990213,0 C4.47715329,0 0,4.47717519 0,10.0000489 Z"></path></svg></i><p class="askt-dialog__message askt-dialog__message--response">The time is 11:02 AM.</p></div><div data-qa-hook="skill-testing-dialog-request" class="askt-dialog__bubble askt-dialog__bubble--request"><p class="askt-dialog__message askt-dialog__message--request">ayyo</p></div><div data-qa-hook="skill-testing-dialog-response" class="askt-dialog__bubble askt-dialog__bubble--response"><i class="astro-icon icon-logo askt-dialog__icon askt-dialog__icon--alexa"><svg viewBox="0 0 24 24" width="24" height="24"><path transform="translate(2 2)" d="M0,10.0000489 C0,15.0707816 3.77428289,19.2594477 8.66667972,19.9113334 L8.66667972,17.8962718 C8.66667972,17.3281595 8.30829606,16.8174945 7.76974193,16.636736 C4.94690794,15.688512 2.927648,12.9904434 3.00202582,9.8313279 C3.09245359,5.9853886 6.22532565,2.96152397 10.0722248,3.00037678 C13.9049334,3.03913173 16.9999315,6.15812215 16.9999315,10.0000489 C16.9999315,10.087639 16.9977785,10.1747398 16.9945489,10.2614491 C16.9887748,10.4004189 16.9838815,10.4807669 16.9775203,10.5606256 C16.975563,10.5860707 16.9731163,10.611418 16.9707676,10.6367653 C16.9658743,10.692549 16.9601002,10.7479411 16.9538368,10.8032355 C16.9466926,10.8660654 16.9385698,10.928504 16.9298598,10.9906489 C16.9258473,11.01903 16.9220305,11.0475091 16.9177244,11.0756945 C16.0607158,16.7212922 8.70778325,19.8942068 8.66756051,19.9115291 C9.10355154,19.9694658 9.54815475,20 9.99990213,20 C15.5228467,20 20,15.5229227 20,10.0000489 C20,4.47717519 15.5228467,0 9.99990213,0 C4.47715329,0 0,4.47717519 0,10.0000489 Z"></path></svg></i><p class="askt-dialog__message askt-dialog__message--response">&lt;Audio only response&gt;</p></div><div data-qa-hook="skill-testing-dialog-request" class="askt-dialog__bubble askt-dialog__bubble--request"><p class="askt-dialog__message askt-dialog__message--request">testing</p></div><div data-qa-hook="skill-testing-dialog-request" class="askt-dialog__bubble askt-dialog__bubble--request"><p class="askt-dialog__message askt-dialog__message--request">what time is it</p></div><div data-qa-hook="skill-testing-dialog-response" class="askt-dialog__bubble askt-dialog__bubble--active-response"><i class="astro-icon icon-logo askt-dialog__icon askt-dialog__icon--alexa"><svg viewBox="0 0 24 24" width="24" height="24"><path transform="translate(2 2)" d="M0,10.0000489 C0,15.0707816 3.77428289,19.2594477 8.66667972,19.9113334 L8.66667972,17.8962718 C8.66667972,17.3281595 8.30829606,16.8174945 7.76974193,16.636736 C4.94690794,15.688512 2.927648,12.9904434 3.00202582,9.8313279 C3.09245359,5.9853886 6.22532565,2.96152397 10.0722248,3.00037678 C13.9049334,3.03913173 16.9999315,6.15812215 16.9999315,10.0000489 C16.9999315,10.087639 16.9977785,10.1747398 16.9945489,10.2614491 C16.9887748,10.4004189 16.9838815,10.4807669 16.9775203,10.5606256 C16.975563,10.5860707 16.9731163,10.611418 16.9707676,10.6367653 C16.9658743,10.692549 16.9601002,10.7479411 16.9538368,10.8032355 C16.9466926,10.8660654 16.9385698,10.928504 16.9298598,10.9906489 C16.9258473,11.01903 16.9220305,11.0475091 16.9177244,11.0756945 C16.0607158,16.7212922 8.70778325,19.8942068 8.66756051,19.9115291 C9.10355154,19.9694658 9.54815475,20 9.99990213,20 C15.5228467,20 20,15.5229227 20,10.0000489 C20,4.47717519 15.5228467,0 9.99990213,0 C4.47715329,0 0,4.47717519 0,10.0000489 Z"></path></svg></i><p class="askt-dialog__message askt-dialog__message--active-response">It's 11:04 AM.</p></div></div></div></div></div></div></div><div class="askt-output"><div class="askt-remote-widget-slot askt-panel-toolbar askt-shadow-after" id="askt_remote_slot_top_tenant_panel"></div><div class="askt-panel-container "><div data-qa-hook="skill-testing-dialog-message-primary" class="askt-dialog__bubble askt-dialog__bubble--primary"><i class="astro-icon icon-logo askt-dialog__icon askt-dialog__icon--alexa"><svg viewBox="0 0 24 24" width="24" height="24"><path transform="translate(2 2)" d="M0,10.0000489 C0,15.0707816 3.77428289,19.2594477 8.66667972,19.9113334 L8.66667972,17.8962718 C8.66667972,17.3281595 8.30829606,16.8174945 7.76974193,16.636736 C4.94690794,15.688512 2.927648,12.9904434 3.00202582,9.8313279 C3.09245359,5.9853886 6.22532565,2.96152397 10.0722248,3.00037678 C13.9049334,3.03913173 16.9999315,6.15812215 16.9999315,10.0000489 C16.9999315,10.087639 16.9977785,10.1747398 16.9945489,10.2614491 C16.9887748,10.4004189 16.9838815,10.4807669 16.9775203,10.5606256 C16.975563,10.5860707 16.9731163,10.611418 16.9707676,10.6367653 C16.9658743,10.692549 16.9601002,10.7479411 16.9538368,10.8032355 C16.9466926,10.8660654 16.9385698,10.928504 16.9298598,10.9906489 C16.9258473,11.01903 16.9220305,11.0475091 16.9177244,11.0756945 C16.0607158,16.7212922 8.70778325,19.8942068 8.66756051,19.9115291 C9.10355154,19.9694658 9.54815475,20 9.99990213,20 C15.5228467,20 20,15.5229227 20,10.0000489 C20,4.47717519 15.5228467,0 9.99990213,0 C4.47715329,0 0,4.47717519 0,10.0000489 Z"></path></svg></i><p class="askt-dialog__message askt-dialog__message--primary ">It's 11:04 AM.</p><i class="astro-icon icon-play
+ askt-dialog__icon
+ askt-dialog__icon--play
+"><svg viewBox="0 0 24 24" width="24" height="24"><polygon transform="translate(5 2)" points="0 20 14 10 0 0"></polygon></svg></i></div><div class="askt-remote-widget-slot" id="askt_remote_slot_top_tenant_canvas"></div><div class="askt-panel askt-panel--skill astro-card"><h3 class="astro-text-large"><span>Skill I/O</span></h3><div class="askt-panel__disabled-msg astro-text-light astro-text-enormous "><span>Skill I/O is available only for speech requests to skills you have created.</span></div><div class="astro-row"><div data-qa-hook="skill-testing-skill-level-input" class="astro-column basis-6"><h4 class="astro-text-light astro-text-medium"><span>JSON Input</span></h4><div class=" ace_editor ace-chrome" style="width: 100%; height: 500px;" id="left"><textarea style="opacity: 0; height: 14.4px; width: 6px; left: 43px; top: 0px;" spellcheck="false" autocapitalize="off" autocorrect="off" class="ace_text-input" wrap="off"></textarea><div class="ace_gutter"><div style="margin-top: 0px; height: 526.8px; width: 39px;" class="ace_layer ace_gutter-layer ace_folding-enabled"><div style="height: 14.4px;" class="ace_gutter-cell ">1</div></div><div style="top: 0px; height: 14.4px;" class="ace_gutter-active-line"></div></div><div style="left: 39px; right: 0px; bottom: 0px;" class="ace_scroller"><div style="margin-top: 0px; width: 402px; height: 526.8px; margin-left: 0px;" class="ace_content"><div class="ace_layer ace_print-margin-layer"><div style="left: 484px; visibility: hidden;" class="ace_print-margin"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height:14.399993896484375px;top:0px;left:0;right:0;"></div></div><div style="padding: 0px 4px;" class="ace_layer ace_text-layer"><div class="ace_line" style="height:14.399993896484375px"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div style="left: 4px; top: 0px; width: 6px; height: 14.4px;" class="ace_cursor"></div></div></div></div><div style="display: none; width: 18px; bottom: 0px;" class="ace_scrollbar ace_scrollbar-v"><div style="width: 18px; height: 14.4px;" class="ace_scrollbar-inner"></div></div><div style="display: none; height: 18px; left: 39px; right: 0px;" class="ace_scrollbar ace_scrollbar-h"><div style="height: 18px; width: 402px;" class="ace_scrollbar-inner"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-family: inherit; font-style: inherit; font-size: inherit; line-height: inherit; font-size-adjust: inherit; font-stretch: inherit; font-feature-settings: inherit; font-language-override: inherit; font-kerning: inherit; font-synthesis: inherit; font-variant: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div><div data-qa-hook="skill-testing-skill-level-output" class="astro-column basis-6"><h4 class="astro-text-light astro-text-medium"><span>JSON Output</span></h4><div class=" ace_editor ace-chrome" style="width: 100%; height: 500px;" id="right"><textarea style="opacity: 0; height: 14.4px; width: 6px; left: 43px; top: 0px;" spellcheck="false" autocapitalize="off" autocorrect="off" class="ace_text-input" wrap="off"></textarea><div class="ace_gutter"><div style="margin-top: 0px; height: 526.8px; width: 39px;" class="ace_layer ace_gutter-layer ace_folding-enabled"><div style="height: 14.4px;" class="ace_gutter-cell ">1</div></div><div style="top: 0px; height: 14.4px;" class="ace_gutter-active-line"></div></div><div style="left: 39px; right: 0px; bottom: 0px;" class="ace_scroller"><div style="margin-top: 0px; width: 402px; height: 526.8px; margin-left: 0px;" class="ace_content"><div class="ace_layer ace_print-margin-layer"><div style="left: 484px; visibility: hidden;" class="ace_print-margin"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height:14.399993896484375px;top:0px;left:0;right:0;"></div></div><div style="padding: 0px 4px;" class="ace_layer ace_text-layer"><div class="ace_line" style="height:14.399993896484375px"></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div style="left: 4px; top: 0px; width: 6px; height: 14.4px;" class="ace_cursor"></div></div></div></div><div style="display: none; width: 18px; bottom: 0px;" class="ace_scrollbar ace_scrollbar-v"><div style="width: 18px; height: 14.4px;" class="ace_scrollbar-inner"></div></div><div style="display: none; height: 18px; left: 39px; right: 0px;" class="ace_scrollbar ace_scrollbar-h"><div style="height: 18px; width: 402px;" class="ace_scrollbar-inner"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-family: inherit; font-style: inherit; font-size: inherit; line-height: inherit; font-size-adjust: inherit; font-stretch: inherit; font-feature-settings: inherit; font-language-override: inherit; font-kerning: inherit; font-synthesis: inherit; font-variant: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div></div><div class="askt-panel askt-panel--renderer astro-card"><h3 class="astro-text-large"><span>Echo Show Display</span></h3><div class="askt-panel__disabled-msg astro-text-light astro-text-enormous "><span>The template is not available or currently not supported</span></div><div class="askt-panel-renderer"><div data-qa-hook="skill-testing-device-renderer" class="renderingContainer simulator--show rectangular"><div id="listContainer" class="renderingTemplate astro-hide"></div></div></div></div><div class="askt-panel askt-panel--renderer astro-card"><h3 class="astro-text-large"><span>Echo Spot Display</span></h3><div class="askt-panel__disabled-msg astro-text-light astro-text-enormous "><span>The template is not available or currently not supported</span></div><div class="askt-panel-renderer"><div data-qa-hook="skill-testing-device-renderer" class="renderingContainer simulator--spot circular"><div id="spotListContainer" class="renderingTemplate astro-hide"></div></div></div></div><!-- react-empty: 105 --><div class="askt-remote-widget-slot" id="askt_remote_slot_bottom_tenant_canvas"></div></div></div></section></div></div></div>
+
+      <script type="text/javascript" src="https://d15wb6kq5zpbnv.cloudfront.net/runtime.6980011404489c4e7d16.js"></script>
+
+      <script type="text/javascript" src="https://d15wb6kq5zpbnv.cloudfront.net/vendor.b9790f57875ba525191b.js"></script>
+
+      <script type="text/javascript" src="https://d15wb6kq5zpbnv.cloudfront.net/main.d780b76210be705aca1b.js"></script>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="dante-footer">
+    <div class="container-fluid p-0">
+        <div class="d-flex flex-row align-items-start dante-footer-row">
+            <div class="flex-column">
+                <div id="localizationSelector" class="dropup">
+                    <a id="localizationSelectorLink" class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="localizationIcon align-middle"></i>
+                    <span class="align-middle">
+                        English
+                    </span>
+                </a>
+                    <ul class="dropdown-menu localizerSelectorMenu pb-3" aria-labelledby="localizationSelectorLink">
+
+                            <li class="py-2 w-100">
+                                <a class="w-100" href="#" onclick="updateLocale(&quot;ja_JP&quot;)">
+                                    <span class="ml-3">Japanese (日本語)</span>
+                                </a>
+                            </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="flex-column ml-auto pt-1">
+                <div class="d-flex flex-row ml-auto flex-wrap pb-1 align-middle justify-content-end">
+                    <div class="flex-column">
+                        <span class="dante-copyright-tag">© 2010 - 2018, Amazon.com, Inc. or its affiliates. All Rights Reserved.</span>
+                    </div>
+                    <div class="flex-column flex-wrap pl-3 pr-0 pb-1 d-none d-lg-inline">
+                        <div class="footer-links">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="https://developer.amazon.com/terms-and-agreements" target="_blank">
+    Terms
+</a>
+<a href="/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html" target="_blank">
+    Docs
+</a>
+<a href="https://forums.developer.amazon.com/spaces/23/index.html" target="_blank">
+    Forums
+</a>
+<a href="https://developer.amazon.com/blogs/alexa" target="_blank">
+    Blog
+</a>
+<a href="/alexa-skills-kit" target="_blank">
+    Alexa Developer Home
+</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row dante-footer-row d-inline d-lg-none pb-2">
+            <div class="footer-links d-flex justify-content-end">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="https://developer.amazon.com/terms-and-agreements" target="_blank">
+    Terms
+</a>
+<a href="/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html" target="_blank">
+    Docs
+</a>
+<a href="https://forums.developer.amazon.com/spaces/23/index.html" target="_blank">
+    Forums
+</a>
+<a href="https://developer.amazon.com/blogs/alexa" target="_blank">
+    Blog
+</a>
+<a href="/alexa-skills-kit" target="_blank">
+    Alexa Developer Home
+</a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- TODO: switch to own JQuery after setup -->
+<script src="https://m.media-amazon.com/images/G/01/alexa-blueprints/jquery-3.3.1.min._CB1518646291_.js"></script>
+<script src="https://m.media-amazon.com/images/G/01/ASK/rosie-v2/js/bootstrap.bundle._CB476904092_.js"></script>
+<script src="/alexa/console/ask/dante/static/js/app.js"></script>
+
+
+</body></html>
