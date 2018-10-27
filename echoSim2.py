@@ -1,3 +1,7 @@
+# encoding=utf8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
@@ -13,6 +17,8 @@ COOKIES = json.load(open(COOKIES))
 ACTIVE_SIMS = []
 ALL_SIMS = []
 lock = threading.Lock()
+THREADS = 5
+ANSWERS = []
 class simulator(object):
 	"""docstring for simulator"""
 	def login(self):
@@ -51,13 +57,19 @@ class simulator(object):
 		self.driver.find_element_by_css_selector("input.askt-utterance__input").clear()
 		self.driver.find_element_by_css_selector("input.askt-utterance__input").send_keys(question)
 		self.driver.find_element_by_css_selector("input.askt-utterance__input").send_keys(Keys.ENTER)
-		time.sleep(.3)
+		page_source = self.driver.page_source
+		while "askt-dialog__message askt-dialog__message--spinner" in str(page_source):
+			print("Waiting on load")
+			time.sleep(.1)
+			page_source = self.driver.page_source
 		for i in range(30):
 			x = self.get_response()
 			if x != None:
-				return x
+				ANSWERS.append(x)
+				return
 			time.sleep(.1)
-		return "I'm not really sure about that."
+		ANSWERS.append("I'm not really sure about that.")
+		return
 
 	def __init__(self):
 		self.id = ''.join([str(random.randint(1,9)) for i in range(10)])
@@ -66,16 +78,6 @@ class simulator(object):
 		if self.test_driver() == False:
 			raise Exception("Error on driver...")
 
-'''
-from flask import Flask, Response, request, jsonify
-app = Flask(__name__)
-
-@app.route('/interact', methods=['POST'])
-def main():
-	question = request.form['question']
-	response = interact(question)
-	return jsonify({"response": response})
-'''
 def create_driver():
 	a = simulator()
 	ALL_SIMS.append(a)
@@ -98,23 +100,31 @@ def ask_question(question):
 				break
 		lock.release()
 		time.sleep(1)
-	print mySim.ask_question(question)
+	mySim.ask_question(question)
 	ACTIVE_SIMS.remove(sim.id)
 
+def printVal(val):
+	print val
+
 def ask_questions(listOfQuestions):
+	while len(ANSWERS) > 0:
+		ANSWERS.pop()
 	threads = [threading.Thread(target=ask_question, args=(arg,)) for arg in listOfQuestions]
 	for thread in threads:
 		thread.start()
 	for thread in threads:
 		thread.join()
+	return ANSWERS
+
+from flask import Flask, Response, request, jsonify
+app = Flask(__name__)
+
+@app.route('/interact', methods=['POST'])
+def main():
+	response = ask_questions(request.form.getlist('question'))
+	return jsonify({"response": response})
 
 if __name__ == "__main__":
-    #app.run(port=8001)
-    setup(5)
-    questions = []
-    for i in range(10):
-    	questions.append('what is {} times {}'.format(random.randint(1,100), random.randint(1,100)))
-    ask_questions(questions)
-    for sim in ALL_SIMS:
-    	sim.driver.close()
+    setup(THREADS)
+    app.run(port=8001)
 
