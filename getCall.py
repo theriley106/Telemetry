@@ -6,6 +6,7 @@ import threading
 import re
 from string import punctuation
 import time
+import os
 try:
 	from keys import *
 except:
@@ -14,7 +15,8 @@ except:
 
 app = Flask(__name__)
 responses = []
-
+ALLOWED_RESPONSES = ["I see you're trying to change your pin?  This is not a currently supported feature with the Citi Services API, but you can login to your account in the citi mobile application.  I've just sent you a text with a link to download the app.", "I see you're trying to close your account.  Unfortunately, that's not something I can help with, but I can forward you to someone who can.  Please stay on the line.", "I see you're trying to pay your bill.  Unfortunately, that's not something I can do over the phone, but I would recommend accessing the Citi Bank website.", "I see you're trying to change your pin?  What card do you want to use?", "I see you're trying to dispute a fraudelent transaction.  Unfortunately, that's not something I can help with, but I can forward you to someone who can.  Please stay on the line.", "I see you're trying to check your balance.  You currently have $47.82 in your account ending in 3313"]
+MAX_SEQUENCE = []
 def countDown():
 	time.sleep(5)
 	for i in range(5):
@@ -26,9 +28,9 @@ def get_capability_token():
 	print("New call initiated...")
 	print('Saying: "Thanks for calling Citi Bank!  How can I help you today?"')
 	resp = VoiceResponse()
-	gather = Gather(input='speech', action='/completed', partial_result_callback='/partial')
-	threading.Thread(target=countDown).start()
+	gather = Gather(input='speech', partial_result_callback='/partial')
 	gather.say("Thanks for calling Citi Bank!  How can I help you today?")
+	threading.Thread(target=countDown).start()
 	resp.append(gather)
 	resp.redirect('/completed', method='POST')
 	print(resp)
@@ -38,7 +40,7 @@ def get_capability_token():
 def getAnother():
 	resp = VoiceResponse()
 	threading.Thread(target=countDown).start()
-	gather = Gather(input='speech', action='/completed', partial_result_callback='/partial')
+	gather = Gather(input='speech', partial_result_callback='/partial')
 	gather.say("Is there anything else I can help you with today?")
 	resp.append(gather)
 	print(resp)
@@ -54,31 +56,50 @@ def getAnotherNCR():
 	print(resp)
 	return str(resp)
 
+def save_request(string):
+	os.system("echo '{}' > temp.txt".format(string))
+
+@app.route('/partUpdate', methods=['GET'])
+def getUpdate():
+	f = sorted(MAX_SEQUENCE, key=lambda k: k['num'])
+	try:
+		stringVal = f[-1]['speech']
+	except:
+		stringVal = "Error"
+	return stringVal
+
+
 @app.route('/partial', methods=["GET","POST"])
 def partial():
 	returnVal = ""
+	temp_info = {"speech": request.form['UnstableSpeechResult'], "num": int(request.form['SequenceNumber'])}
+	MAX_SEQUENCE.append(temp_info)
 	if len(responses) == 0:
-		print request.form
 		print request.form['StableSpeechResult']
 		if any(p in request.form['StableSpeechResult'] for p in punctuation):
 			try:
-				for val in re.split('(?<=[.!?]) +',request.form['StableSpeechResult']):
-					print str(val)
-					print any(p in str(val) for p in punctuation)
-					if any(p in str(val) for p in punctuation) == True:
-						print("TESTING")
-						question = "ask citi bank " + str(val)
-						a = requests.post("http://127.0.0.1:8000/interact", data={"question": question})
-						interaction = a.json()['response']
-						if len(interaction) > 5:
-							resp = VoiceResponse()
-							responses.append(interaction)
-							#client = Client(account_sid, auth_token)
-							#call = client.calls(request.form['CallSid']).update(method='POST', url='http://254f948e.ngrok.io/completed')
-							returnVal = interaction
-							break
-					else:
-						print("Nah")
+				all_sentences = re.split('(?<=[.!?]) +',request.form['StableSpeechResult'])
+				for val in all_sentences:
+					if any(p in str(val) for p in punctuation) == False:
+						all_sentences.remove(val)
+				if len(all_sentences) > 0:
+					print("FOUND EARLY FIRST PART")
+					all_sentences = ["ask citi bank " + x for x in all_sentences]
+					a = requests.post("http://127.0.0.1:8001/interact", data={"question": all_sentences})
+					print a.json()
+					for val in a.json()['response']:
+						if val in ALLOWED_RESPONSES:
+							responses.append(val)
+							print("AYYYYOOOO FOUND EARLY")
+							#resp = VoiceResponse()
+							#resp.append(val)
+							client = Client(account_sid, auth_token)
+							call = client.calls(request.form['CallSid']).update(method='POST', url='http://92aa1051.ngrok.io/completed')
+							return ""
+						else:
+							print("{} not in {}".format(val, ALLOWED_RESPONSES))
+				else:
+					print("Nah")
 			except Exception as exp:
 				print exp
 
@@ -87,7 +108,9 @@ def partial():
 
 @app.route('/completed', methods=['GET', 'POST'])
 def getResponse():
-	print request.form
+	while len(MAX_SEQUENCE) > 0:
+		MAX_SEQUENCE.pop()
+	print("ON RESPONSES: {}".format(responses))
 	resp = VoiceResponse()
 	if len(responses) == 0:
 		print("POSTED TO GET RESPONSE")
@@ -101,14 +124,13 @@ def getResponse():
 		if 'manager' in request.form['SpeechResult'].lower():
 			question = question.replace("citi bank", "NCR store")
 		question += request.form['SpeechResult'].replace("Global", "").replace("global", "")
-		a = requests.post("http://127.0.0.1:8000/interact", data={"question": question})
+		a = requests.post("http://127.0.0.1:8001/interact", data={"question": question})
 		interaction = a.json()['response']
 	else:
 		interaction = responses.pop(-1)
 		while len(responses) > 0:
 			responses.pop(-1)
 	resp.say(interaction)
-	print(resp)
 	if 'unfortunately' in str(interaction).lower():
 		resp.dial('864-567-4106')
 	if 'unfortunately' not in str(interaction).lower():
