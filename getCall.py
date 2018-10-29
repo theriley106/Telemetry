@@ -1,11 +1,12 @@
 import requests
-from flask import Flask, Response, request
+from flask import Flask, Response, request, render_template
 from twilio.twiml.voice_response import VoiceResponse, Gather
 from twilio.rest import Client
 import threading
 import re
 from string import punctuation
 import time
+import random
 import os
 try:
 	from keys import *
@@ -22,6 +23,10 @@ def countDown():
 	for i in range(5):
 		print("Waiting {} more seconds for additional user input".format(5-i))
 		time.sleep(1)
+
+@app.route('/', methods=['GET'])
+def indexPage():
+	return render_template("index.html")
 
 @app.route('/voice', methods=['GET', 'POST'])
 def get_capability_token():
@@ -94,7 +99,7 @@ def partial():
 							#resp = VoiceResponse()
 							#resp.append(val)
 							client = Client(account_sid, auth_token)
-							call = client.calls(request.form['CallSid']).update(method='POST', url='http://92aa1051.ngrok.io/completed')
+							call = client.calls(request.form['CallSid']).update(method='POST', url='http://122bb714.ngrok.io/completed')
 							return ""
 						else:
 							print("{} not in {}".format(val, ALLOWED_RESPONSES))
