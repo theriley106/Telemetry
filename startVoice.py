@@ -18,7 +18,7 @@ COOKIES = json.load(open(COOKIES))
 ACTIVE_SIMS = []
 ALL_SIMS = []
 lock = threading.Lock()
-THREADS = 10
+THREADS = 15
 ANSWERS = {}
 class simulator(object):
 	"""docstring for simulator"""
@@ -67,7 +67,7 @@ class simulator(object):
 		page_source = self.driver.page_source
 		a = 0
 		while "askt-dialog__message askt-dialog__message--spinner" in str(page_source):
-			print("Waiting on question: {}".format(question))
+			print("Waiting on question: {} | Working: {} Active: {}".format(question, len(ALL_SIMS)-len(ACTIVE_SIMS), len(ACTIVE_SIMS)))
 			time.sleep(.1)
 			page_source = self.driver.page_source
 			a += 1
@@ -87,11 +87,17 @@ class simulator(object):
 	def refresh_token(self):
 		while True:
 			time.sleep(random.randint(1, 10)*10)
+			lock.acquire()
 			self.tempLock.acquire()
 			ACTIVE_SIMS.append(self.id)
+			lock.release()
 			print("Refreshing token")
 			self.driver.get(SIM_URL)
-			ACTIVE_SIMS.remove(self.id)
+			if self.test_driver() == False:
+				self.driver.quit()
+				ALL_SIMS.append(simulator())
+			else:
+				ACTIVE_SIMS.remove(self.id)
 			self.tempLock.release()
 
 	def __init__(self):
