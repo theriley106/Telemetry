@@ -1,20 +1,24 @@
 import threading
 import requests
 import time
+import random
+
+def genQuestion():
+	return "what is {} times {}".format(random.randint(1,1000), random.randint(1, 1000))
 
 def try1():
-	a = requests.post("http://127.0.0.1:8001/interact", data={"question": "what is the weather in akron ohio"})
+	a = requests.post("http://127.0.0.1:8001/interact", data={"question": [genQuestion()] * 20})
 	interaction = a.json()['response']
 	print interaction
 
 def try2():
-	a = requests.post("http://127.0.0.1:8001/interact", data={"question": ["what is your name", "what is the weather in simpsonville sc"] * 10})
-	interaction = a.json()['response']
+	a = requests.post("http://127.0.0.1:8001/interact", data={"question": [genQuestion()] * 20})
+	interaction = a.json()
 	print interaction
 
 
 if __name__ == '__main__':
-	thread = threading.Thread(target=try1)
+	thread = threading.Thread(target=try2)
 	thread2 = threading.Thread(target=try2)
 	raw_input("Press enter to start: ")
 	thread.start()
