@@ -3,12 +3,12 @@ import requests
 import time
 
 def try1():
-	a = requests.post("http://127.0.0.1:8000/interact", data={"question": "what is the weather in akron ohio"})
+	a = requests.post("http://127.0.0.1:8001/interact", data={"question": "what is the weather in akron ohio"})
 	interaction = a.json()['response']
 	print interaction
 
 def try2():
-	a = requests.post("http://127.0.0.1:8001/interact", data={"question": "what is the weather in simpsonville sc"})
+	a = requests.post("http://127.0.0.1:8001/interact", data={"question": ["what is your name", "what is the weather in simpsonville sc"] * 10})
 	interaction = a.json()['response']
 	print interaction
 
