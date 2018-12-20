@@ -142,7 +142,7 @@ def ask_questions(listOfQuestions):
 		thread.start()
 	for thread in threads:
 		thread.join()
-	return [ANSWERS[question] for question in listOfQuestions]
+	return [{"question": question, "answer": ANSWERS[question]} for question in listOfQuestions]
 
 from flask import Flask, Response, request, jsonify
 app = Flask(__name__)
