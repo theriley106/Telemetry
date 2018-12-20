@@ -23,13 +23,16 @@ ANSWERS = {}
 class simulator(object):
 	"""docstring for simulator"""
 	def login(self):
+		self.tempLock.acquire()
 		self.driver.get(SIM_URL)
 		for cookie in COOKIES:
 			if cookie['domain'] == '.amazon.com':
 				self.driver.add_cookie(cookie)
 		self.driver.get(SIM_URL)
+		self.tempLock.release()
 
 	def test_driver(self):
+		self.tempLock.acquire()
 		count = 0
 		while True:
 			try:
@@ -44,6 +47,7 @@ class simulator(object):
 			count += 1
 			time.sleep(3)
 			self.driver.save_screenshot("{}.png".format(random.randint(1, 50)))
+		self.tempLock.release()
 		if count > 8:
 			return False
 		return True
@@ -56,6 +60,7 @@ class simulator(object):
 			return None
 
 	def ask_question(self, question):
+		self.tempLock.acquire()
 		self.driver.find_element_by_css_selector("input.askt-utterance__input").clear()
 		self.driver.find_element_by_css_selector("input.askt-utterance__input").send_keys(question)
 		self.driver.find_element_by_css_selector("input.askt-utterance__input").send_keys(Keys.ENTER)
@@ -72,12 +77,25 @@ class simulator(object):
 			x = self.get_response()
 			if x != None:
 				ANSWERS[question] = x
+				self.tempLock.release()
 				return
 			time.sleep(.1)
 		ANSWERS[question] = "I'm not really sure about that."
+		self.tempLock.release()
 		return
 
+	def refresh_token(self):
+		while True:
+			time.sleep(random.randint(1, 10)*10)
+			self.tempLock.acquire()
+			ACTIVE_SIMS.append(self.id)
+			print("Refreshing token")
+			self.driver.get(SIM_URL)
+			ACTIVE_SIMS.remove(self.id)
+			self.tempLock.release()
+
 	def __init__(self):
+		self.tempLock = threading.Lock()
 		options = Options()
 		options.add_argument('--headless')
 		options.add_argument('--disable-gpu')
@@ -88,6 +106,10 @@ class simulator(object):
 		self.login()
 		if self.test_driver() == False:
 			raise Exception("Error on driver...")
+		else:
+			threading.Thread(target=self.refresh_token).start()
+
+
 
 def create_driver():
 	a = simulator()
