@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, Response, request, render_template
+from flask import Flask, Response, request, render_template, jsonify
 from twilio.twiml.voice_response import VoiceResponse, Gather
 from twilio.rest import Client
 import threading
@@ -7,7 +7,10 @@ import re
 from string import punctuation
 import time
 import random
+import json
 import os
+from flask_sockets import Sockets
+import datetime
 try:
 	from keys import *
 except:
@@ -18,6 +21,47 @@ app = Flask(__name__)
 responses = []
 ALLOWED_RESPONSES = ["I see you're trying to change your pin?  This is not a currently supported feature with the Citi Services API, but you can login to your account in the citi mobile application.  I've just sent you a text with a link to download the app.", "I see you're trying to close your account.  Unfortunately, that's not something I can help with, but I can forward you to someone who can.  Please stay on the line.", "I see you're trying to pay your bill.  Unfortunately, that's not something I can do over the phone, but I would recommend accessing the Citi Bank website.", "I see you're trying to change your pin?  What card do you want to use?", "I see you're trying to dispute a fraudelent transaction.  Unfortunately, that's not something I can help with, but I can forward you to someone who can.  Please stay on the line.", "I see you're trying to check your balance.  You currently have $47.82 in your account ending in 3313"]
 MAX_SEQUENCE = []
+DEFAULT_SEQUENCE = {'FromZip': 'UNKNOWN', 'From': 'UNKNOWN', 'FromCity': 'UNKNOWN', 'ApiVersion': 'UNKNOWN', 'To': 'UNKNOWN', 'ToCity': 'UNKNOWN', 'CalledState': 'UNKNOWN', 'FromState': 'UNKNOWN', 'Direction': 'UNKNOWN', 'SequenceNumber': 'UNKNOWN', 'CallStatus': 'UNKNOWN', 'ToZip': 'UNKNOWN', 'UnstableSpeechResult': 'UNKNOWN', 'CallerCity': 'UNKNOWN', 'FromCountry': 'UNKNOWN', 'Language': 'UNKNOWN', 'CalledCity': 'UNKNOWN', 'CalledCountry': 'UNKNOWN', 'Caller': 'UNKNOWN', 'CallSid': 'UNKNOWN', 'AccountSid': 'UNKNOWN', 'Called': 'UNKNOWN', 'CallerCountry': 'UNKNOWN', 'CalledZip': 'UNKNOWN', 'CallerZip': 'UNKNOWN', 'StableSpeechResult': 'UNKNOWN', 'Stability': 'UNKNOWN', 'CallerState': 'UNKNOWN', 'ToCountry': 'UNKNOWN', 'ToState': 'UNKNOWN'}
+ALL_INFO = [DEFAULT_SEQUENCE]
+
+sockets = Sockets(app)
+
+print("STARTING WITH WEB SOCKETS")
+
+def dict_to_array(dictValue):
+	a = []
+	for key, value in dictValue.iteritems():
+		a.append([key, value])
+	return a
+
+def addNewInfo(value=None):
+	if value == None:
+		#return "AYYO"
+		try:
+			g = dict_to_array(ALL_INFO[-1].to_dict())
+			#print g
+			return json.dumps(g)
+		except:
+			g = dict_to_array(DEFAULT_SEQUENCE)
+			#print g
+			return json.dumps(g)
+	else:
+		for val in ALL_INFO:
+			ALL_INFO.remove(val)
+		ALL_INFO.append(value)
+
+@sockets.route('/echo')
+def echo_socket(ws):
+    while True:
+    	#message = ws.receive()
+        ws.send(str(addNewInfo()))
+        time.sleep(.1)
+
+@app.route('/echo_test', methods=['GET'])
+def echo_test():
+    return render_template('example.html')
+
+
 def countDown():
 	time.sleep(5)
 	for i in range(5):
@@ -79,6 +123,7 @@ def partial():
 	returnVal = ""
 	temp_info = {"speech": request.form['UnstableSpeechResult'], "num": int(request.form['SequenceNumber'])}
 	MAX_SEQUENCE.append(temp_info)
+	addNewInfo(request.form)
 	print("UNSTABLE: {}".format(request.form['UnstableSpeechResult']))
 	print("STABLE: {}".format(request.form['StableSpeechResult']))
 	if len(responses) == 0:
@@ -113,7 +158,7 @@ def partialBackup():
 				if len(all_sentences) > 0:
 					print("FOUND EARLY FIRST PART")
 					all_sentences = ["ask citi bank " + x for x in all_sentences]
-					a = requests.post("http://127.0.0.1:8000/interact", data={"question": all_sentences})
+					a = requests.post("http://127.0.0.1:8001/interact", data={"question": all_sentences})
 					print a.json()
 					for val in a.json()['response']:
 						if val in ALLOWED_RESPONSES:
@@ -180,7 +225,7 @@ def getResponseNCR():
 	else:
 		print('Saying: "Alexa, {}" to the Alexa Emulator'.format(request.form['SpeechResult']))
 	question += request.form['SpeechResult'].replace("Global", "").replace("global", "")
-	a = requests.post("http://127.0.0.1:8000/interact", data={"question": question})
+	a = requests.post("http://127.0.0.1:8001/interact", data={"question": question})
 	print("DONE WITH A: {}".format(a))
 	interaction = a.json()['response']
 	resp.say(interaction[0]['answer'])
