@@ -39,3 +39,21 @@
 					<p class="mb-0">ToState: <b id="ToState"></b></p>
                 </div>
             </div>
+<script type="text/javascript">
+       var ws = new WebSocket("ws://localhost:5000/echo");
+       ws.onopen = function() {
+           alert("OPEN");
+       };
+       ws.onclose = function(evt) {
+           alert("AYYO");
+       };
+       ws.onmessage = function(evt) {
+          var obj = JSON.parse(evt.data);
+          //console.log(obj);
+          for (var i = 0; i < obj.length; i++) {
+              // Iterate over numeric indexes from 0 to 5, as everyone expects.
+              document.getElementById(obj[i][0]).innerHTML = obj[i][1];
+          }
+
+       };
+    </script>

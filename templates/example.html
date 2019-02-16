@@ -6,13 +6,19 @@
   <script type="text/javascript">
        var ws = new WebSocket("ws://localhost:5000/echo");
        ws.onopen = function() {
-           ws.send("socket open");
+           return
        };
        ws.onclose = function(evt) {
-           alert("socket closed");
+           return
        };
        ws.onmessage = function(evt) {
-            document.getElementById("test").innerHTML = evt.data;
+          var obj = JSON.parse(evt.data);
+          console.log(obj);
+          for (var i = 0; i < obj.length; i++) {
+              // Iterate over numeric indexes from 0 to 5, as everyone expects.
+              document.getElementById(obj[i][0]).innerHTML = obj[i][1];
+          }
+
        };
     </script>
 </html>
