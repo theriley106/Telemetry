@@ -79,6 +79,29 @@ def partial():
 	returnVal = ""
 	temp_info = {"speech": request.form['UnstableSpeechResult'], "num": int(request.form['SequenceNumber'])}
 	MAX_SEQUENCE.append(temp_info)
+	print("UNSTABLE: {}".format(request.form['UnstableSpeechResult']))
+	print("STABLE: {}".format(request.form['StableSpeechResult']))
+	if len(responses) == 0:
+		print request.form['StableSpeechResult']
+		if any(p in request.form['StableSpeechResult'] for p in punctuation):
+			try:
+				all_sentences = re.split('(?<=[.!?]) +',request.form['StableSpeechResult'])
+				for val in all_sentences:
+					if any(p in str(val) for p in punctuation) == False:
+						all_sentences.remove(val)
+				if len(all_sentences) > 0:
+					print("FOUND EARLY FIRST PART")
+					all_sentences = ["ask NCR " + x for x in all_sentences]
+					print(all_sentences)
+			except Exception as exp:
+				print exp
+	return returnVal
+
+@app.route('/partialBackup', methods=["GET","POST"])
+def partialBackup():
+	returnVal = ""
+	temp_info = {"speech": request.form['UnstableSpeechResult'], "num": int(request.form['SequenceNumber'])}
+	MAX_SEQUENCE.append(temp_info)
 	if len(responses) == 0:
 		print request.form['StableSpeechResult']
 		if any(p in request.form['StableSpeechResult'] for p in punctuation):
@@ -90,7 +113,7 @@ def partial():
 				if len(all_sentences) > 0:
 					print("FOUND EARLY FIRST PART")
 					all_sentences = ["ask citi bank " + x for x in all_sentences]
-					a = requests.post("http://127.0.0.1:8001/interact", data={"question": all_sentences})
+					a = requests.post("http://127.0.0.1:8000/interact", data={"question": all_sentences})
 					print a.json()
 					for val in a.json()['response']:
 						if val in ALLOWED_RESPONSES:
@@ -99,7 +122,7 @@ def partial():
 							#resp = VoiceResponse()
 							#resp.append(val)
 							client = Client(account_sid, auth_token)
-							call = client.calls(request.form['CallSid']).update(method='POST', url='http://122bb714.ngrok.io/completed')
+							call = client.calls(request.form['CallSid']).update(method='POST', url='http://0df07280.ngrok.io/completed')
 							return ""
 						else:
 							print("{} not in {}".format(val, ALLOWED_RESPONSES))
@@ -107,7 +130,6 @@ def partial():
 					print("Nah")
 			except Exception as exp:
 				print exp
-
 	return returnVal
 
 
@@ -150,6 +172,7 @@ def getResponseNCR():
 	print("POSTED TO GET RESPONSE")
 	print("User Said: " + request.form['SpeechResult'])
 	resp = VoiceResponse()
+	print("DONE WITH RESP")
 	question = ""
 	if 'global' not in request.form['SpeechResult'].lower():
 		print('Saying: "Alexa, Ask NCR store {}" to the Alexa Emulator'.format(request.form['SpeechResult']))
@@ -158,8 +181,9 @@ def getResponseNCR():
 		print('Saying: "Alexa, {}" to the Alexa Emulator'.format(request.form['SpeechResult']))
 	question += request.form['SpeechResult'].replace("Global", "").replace("global", "")
 	a = requests.post("http://127.0.0.1:8000/interact", data={"question": question})
+	print("DONE WITH A: {}".format(a))
 	interaction = a.json()['response']
-	resp.say(interaction)
+	resp.say(interaction[0]['answer'])
 	print(resp)
 	if 'absolutely' in str(interaction).lower():
 		resp.dial('864-567-4106')
@@ -172,7 +196,7 @@ def getNCRResponse():
 	print("New call initiated...")
 	print('Saying: "Thanks for calling the HackGT Grocery Store!  Powered by NCR.  How can I help you today?"')
 	resp = VoiceResponse()
-	gather = Gather(input='speech', action='/completedNCR', timeout=5)
+	gather = Gather(input='speech', action='/completedNCR', partial_result_callback='/partial', timeout=5)
 	threading.Thread(target=countDown).start()
 	gather.say("Thanks for calling the HackGT Grocery Store!  Powered by NCR.  How can I help you today?")
 

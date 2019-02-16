@@ -18,7 +18,7 @@ COOKIES = json.load(open(COOKIES))
 ACTIVE_SIMS = []
 ALL_SIMS = []
 lock = threading.Lock()
-THREADS = 15
+THREADS = 3
 ANSWERS = {}
 class simulator(object):
 	"""docstring for simulator"""
@@ -86,7 +86,7 @@ class simulator(object):
 
 	def refresh_token(self):
 		while True:
-			time.sleep(random.randint(1, 10)*10)
+			time.sleep(random.randint(1, 10)*30)
 			lock.acquire()
 			self.tempLock.acquire()
 			ACTIVE_SIMS.append(self.id)
@@ -113,7 +113,8 @@ class simulator(object):
 		if self.test_driver() == False:
 			raise Exception("Error on driver...")
 		else:
-			threading.Thread(target=self.refresh_token).start()
+			pass
+			#threading.Thread(target=self.refresh_token).start()
 
 
 
@@ -163,5 +164,5 @@ def main():
 
 if __name__ == "__main__":
     setup(THREADS)
-    app.run(port=8001, threaded=True)
+    app.run(port=8000, threaded=True)
 
