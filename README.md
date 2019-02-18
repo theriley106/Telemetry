@@ -6,7 +6,7 @@ Implementing Amazon's Alexa into a customer service platform
 python resetCookie.py
 python startVoice.py
 gunicorn -k flask_sockets.worker -b 0.0.0.0:5000 getCall:app
-./ngrok http 5000
+./ngrok http 5000 -subdomain=telemetry.ngrok.io
 Go to Twilio and change endpoint
 
 
