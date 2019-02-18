@@ -19,4 +19,6 @@ Go to Twilio and change endpoint
 
 - When are undergraduate admission decisions released
 
-- Can I have
+- When do you close today
+
+- What is the phone number for the {office name}
