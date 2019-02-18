@@ -42,10 +42,12 @@
 <script type="text/javascript">
        var ws = new WebSocket("ws://localhost:5000/echo");
        ws.onopen = function() {
-           alert("OPEN");
+           //alert("OPEN");
+           return
        };
        ws.onclose = function(evt) {
-           alert("AYYO");
+           //alert("AYYO");
+           return
        };
        ws.onmessage = function(evt) {
           var obj = JSON.parse(evt.data);
