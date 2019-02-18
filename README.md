@@ -9,7 +9,14 @@ python getCall.py
 ./ngrok http 5000
 Go to Twilio and change endpoint
 
+
 <p align="center">
 <img src ="static/workflow.png">
 </p>
 
+
+### Stanford Skill Flow
+
+- When are undergraduate admission decisions released
+
+- Can I have
