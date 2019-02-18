@@ -240,6 +240,15 @@ def getResponseNCR():
 def getNCRResponse():
 	print("New call initiated...")
 	print('Saying: "Thanks for calling the HackGT Grocery Store!  Powered by NCR.  How can I help you today?"')
+	if ALL_INFO[-1] == DEFAULT_SEQUENCE:
+		tmp = ALL_INFO[-1]
+		x = request.form.to_dict()
+		for key, val in tmp.iteritems():
+			if key in x:
+				tmp[key] = x[key]
+			else:
+				tmp[key] = ""
+		addNewInfo(tmp)
 	resp = VoiceResponse()
 	gather = Gather(input='speech', action='/completedNCR', partial_result_callback='/partial', timeout=5)
 	threading.Thread(target=countDown).start()
