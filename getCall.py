@@ -21,17 +21,29 @@ app = Flask(__name__)
 responses = []
 ALLOWED_RESPONSES = ["I see you're trying to change your pin?  This is not a currently supported feature with the Citi Services API, but you can login to your account in the citi mobile application.  I've just sent you a text with a link to download the app.", "I see you're trying to close your account.  Unfortunately, that's not something I can help with, but I can forward you to someone who can.  Please stay on the line.", "I see you're trying to pay your bill.  Unfortunately, that's not something I can do over the phone, but I would recommend accessing the Citi Bank website.", "I see you're trying to change your pin?  What card do you want to use?", "I see you're trying to dispute a fraudelent transaction.  Unfortunately, that's not something I can help with, but I can forward you to someone who can.  Please stay on the line.", "I see you're trying to check your balance.  You currently have $47.82 in your account ending in 3313"]
 MAX_SEQUENCE = []
-DEFAULT_SEQUENCE = {'FromZip': 'UNKNOWN', 'From': 'UNKNOWN', 'FromCity': 'UNKNOWN', 'ApiVersion': 'UNKNOWN', 'To': 'UNKNOWN', 'ToCity': 'UNKNOWN', 'CalledState': 'UNKNOWN', 'FromState': 'UNKNOWN', 'Direction': 'UNKNOWN', 'SequenceNumber': 'UNKNOWN', 'CallStatus': 'UNKNOWN', 'ToZip': 'UNKNOWN', 'UnstableSpeechResult': 'UNKNOWN', 'CallerCity': 'UNKNOWN', 'FromCountry': 'UNKNOWN', 'Language': 'UNKNOWN', 'CalledCity': 'UNKNOWN', 'CalledCountry': 'UNKNOWN', 'Caller': 'UNKNOWN', 'CallSid': 'UNKNOWN', 'AccountSid': 'UNKNOWN', 'Called': 'UNKNOWN', 'CallerCountry': 'UNKNOWN', 'CalledZip': 'UNKNOWN', 'CallerZip': 'UNKNOWN', 'StableSpeechResult': 'UNKNOWN', 'Stability': 'UNKNOWN', 'CallerState': 'UNKNOWN', 'ToCountry': 'UNKNOWN', 'ToState': 'UNKNOWN'}
+DEFAULT_SEQUENCE = {'callTime': '--', 'FromZip': '--', 'From': '--', 'FromCity': '--', 'ApiVersion': '--', 'To': '--', 'ToCity': '--', 'CalledState': '--', 'FromState': '--', 'Direction': '--', 'SequenceNumber': '--', 'CallStatus': '--', 'ToZip': '--', 'UnstableSpeechResult': '--', 'CallerCity': '--', 'FromCountry': '--', 'Language': '--', 'CalledCity': '--', 'CalledCountry': '--', 'Caller': '--', 'CallSid': '--', 'AccountSid': '--', 'Called': '--', 'CallerCountry': '--', 'CalledZip': '--', 'CallerZip': '--', 'StableSpeechResult': '--', 'Stability': '--', 'CallerState': '--', 'ToCountry': '--', 'ToState': '--'}
 ALL_INFO = [DEFAULT_SEQUENCE]
-
+SPEECHES = []
 sockets = Sockets(app)
+CALL_INFO = {}
+CALL_LOGS = {}
 
 print("STARTING WITH WEB SOCKETS")
 
 def dict_to_array(dictValue):
 	a = []
+	found = False
 	for key, value in dictValue.iteritems():
+		if key == 'callTime':
+			found = True
 		a.append([key, value])
+	try:
+		print(CALL_LOGS[ALL_INFO[-1]['CallSid']])
+		#a.append(['logs', CALL_LOGS[ALL_INFO[-1]['CallSid']]])
+	except:
+		pass
+	if found == False:
+		a.append(['callTime', CALL_INFO[tmp['CallSid']]])
 	return a
 
 def addNewInfo(value=None):
@@ -46,20 +58,22 @@ def addNewInfo(value=None):
 			#print g
 			return json.dumps(g)
 	else:
+		#print(value)
 		for val in ALL_INFO:
 			ALL_INFO.remove(val)
+
 		ALL_INFO.append(value)
 
 @sockets.route('/echo')
 def echo_socket(ws):
-    while True:
-    	#message = ws.receive()
-        ws.send(str(addNewInfo()))
-        time.sleep(.1)
+	while True:
+		#message = ws.receive()
+		ws.send(str(addNewInfo()))
+		time.sleep(.1)
 
 @app.route('/echo_test', methods=['GET'])
 def echo_test():
-    return render_template('example.html')
+	return render_template('example.html')
 
 
 def countDown():
@@ -87,22 +101,10 @@ def get_capability_token():
 
 @app.route('/anyThingElse', methods=["GET","POST"])
 def getAnother():
+	SPEECHES.append("Is there anything else I can help you with today?")
+	#CALL_LOGS[ALL_INFO[-1]['CallSid']].append("Is there anything else I can help you with today?")
 	resp = VoiceResponse()
-	threading.Thread(target=countDown).start()
-	gather = Gather(input='speech', partial_result_callback='/partial')
-	gather.say("Is there anything else I can help you with today?")
-	resp.append(gather)
-	print(resp)
-	return str(resp)
-
-@app.route('/anyThingElseNCR', methods=["GET","POST"])
-def getAnotherNCR():
-	resp = VoiceResponse()
-	threading.Thread(target=countDown).start()
-	gather = Gather(input='speech', action='/completedNCR', timeout=5)
-	gather.say("Is there anything else I can help you with today?")
-	resp.append(gather)
-	print(resp)
+	resp.redirect('/ncrVoice', method="POST")
 	return str(resp)
 
 def save_request(string):
@@ -214,8 +216,14 @@ def getResponse():
 
 @app.route('/completedNCR', methods=['GET', 'POST'])
 def getResponseNCR():
+	print request.form
 	print("POSTED TO GET RESPONSE")
 	print("User Said: " + request.form['SpeechResult'])
+	try:
+		if CALL_LOGS[ALL_INFO[-1]['CallSid']] != request.form['SpeechResult']:
+			CALL_LOGS[ALL_INFO[-1]['CallSid']].append(request.form['SpeechResult'])
+	except:
+		pass
 	resp = VoiceResponse()
 	print("DONE WITH RESP")
 	question = ""
@@ -229,17 +237,19 @@ def getResponseNCR():
 	print("DONE WITH A: {}".format(a))
 	interaction = a.json()['response']
 	resp.say(interaction[0]['answer'])
+	CALL_LOGS[ALL_INFO[-1]['CallSid']].append(interaction[0]['answer'])
 	print(resp)
 	if 'absolutely' in str(interaction).lower():
 		resp.dial('864-567-4106')
 	if 'absolutely' not in str(interaction).lower():
+		print("REDIRECTING TO ANYTHIGN ELSE")
 		resp.redirect('/anyThingElse', method='POST')
 	return str(resp)
 
 @app.route("/ncrVoice", methods=["GET", "POST"])
 def getNCRResponse():
 	print("New call initiated...")
-	print('Saying: "Thanks for calling the HackGT Grocery Store!  Powered by NCR.  How can I help you today?"')
+	print('Saying: "Thanks for calling the Stanford University Innovation Store!  Powered by Telemetry.  How can I help you today?"')
 	if ALL_INFO[-1] == DEFAULT_SEQUENCE:
 		tmp = ALL_INFO[-1]
 		x = request.form.to_dict()
@@ -248,15 +258,32 @@ def getNCRResponse():
 				tmp[key] = x[key]
 			else:
 				tmp[key] = ""
+		try:
+			if tmp['CallSid'] not in CALL_LOGS:
+				CALL_LOGS[tmp['CallSid']] = []
+			if tmp['CallSid'] not in CALL_INFO:
+				CALL_INFO[tmp['CallSid']] = int(time.time())
+			tmp['callTime'] = CALL_INFO[tmp['CallSid']]
+		except Exception as exp:
+			tmp['callTime'] = str(exp)
 		addNewInfo(tmp)
 	resp = VoiceResponse()
 	gather = Gather(input='speech', action='/completedNCR', partial_result_callback='/partial', timeout=5)
 	threading.Thread(target=countDown).start()
-	gather.say("Thanks for calling the HackGT Grocery Store!  Powered by NCR.  How can I help you today?")
+	#speechVal = SPEECHES[-1]
+	if len(SPEECHES) == 0:
+		# This means it's the start
+		speechVal = "Thanks for calling the Stanford University Innovation Store!  Powered by Telemetry.  How can I help you today?"
+	else:
+		speechVal = SPEECHES.pop(-1)
+	CALL_LOGS[ALL_INFO[-1]['CallSid']].append(speechVal)
+	gather.say(speechVal)
 
 	resp.append(gather)
+	#CALL_LOGS[ALL_INFO[-1]['CallSid']].append(speechVal)
 	resp.redirect('/completedNCR', method='POST')
 	print(resp)
+	print(CALL_LOGS[ALL_INFO[-1]['CallSid']])
 	return str(resp)
 
 def send_message(toNum):
