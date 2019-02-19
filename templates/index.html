@@ -17,7 +17,12 @@
 
   <!-- Custom styles for this template-->
   <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
-
+<style>
+mark {
+  background-color: black;
+  color: white;
+}
+</style>
 </head>
 
 <body id="page-top">
@@ -144,6 +149,19 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">
                  <center><h6 class="m-0 font-weight-bold text-primary">Real-Time Transcription</h6></center>
+                </div>
+                <!-- Card Body -->
+               <div class="card-body">
+                  <h5 class="mb-0">Predicted Speech: <mark><b id="UnstableSpeechResult"></b></mark></h5>
+
+                   <h5 class="mb-0">Finalized Speech: <b id="StableSpeechResult"></b></h5>
+                </div>
+              </div>
+              <br>
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                 <center><h6 class="m-0 font-weight-bold text-primary">Call ID <h6 id="callID"></h6> Transcript</h6></center>
                 </div>
                 <!-- Card Body -->
                <div class="card-body">
