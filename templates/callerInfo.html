@@ -56,10 +56,11 @@
               // Iterate over numeric indexes from 0 to 5, as everyone expects.
               //console.log(obj[i][0]);
               if (obj[i][0] === "callTime"){
-              	document.getElementById(obj[i][0]).innerHTML = String(Math.floor(Date.now() / 1000) - parseInt(obj[i][1]));
+                a = Math.floor(Date.now() / 1000) - parseInt(obj[i][1]) || 0;
+              	document.getElementById(obj[i][0]).innerHTML = String(a);
               	//console.log("AYYYYOOOO");
               } else {
-              document.getElementById(obj[i][0]).innerHTML = obj[i][1];
+                document.getElementById(obj[i][0]).innerHTML = obj[i][1];
           }
           }
 

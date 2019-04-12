@@ -67,7 +67,7 @@ class simulator(object):
 		page_source = self.driver.page_source
 		a = 0
 		while "askt-dialog__message askt-dialog__message--spinner" in str(page_source):
-			print("Waiting on question: {} | Working: {} Active: {}".format(question, len(ALL_SIMS)-len(ACTIVE_SIMS), len(ACTIVE_SIMS)))
+			print("Waiting on question: {} | Working: {} Active: {}".format(question.replace("ask ncr store", ""), len(ALL_SIMS)-len(ACTIVE_SIMS), len(ACTIVE_SIMS)))
 			time.sleep(.1)
 			page_source = self.driver.page_source
 			a += 1
